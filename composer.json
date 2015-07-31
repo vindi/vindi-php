@@ -1,0 +1,44 @@
+{
+    "name": "vindi/vindi-php",
+    "description": "SDK Vindi para PHP.",
+    "keywords": [
+        "vindi",
+        "vindi-php",
+        "vindi-php-sdk"
+    ],
+    "homepage": "https://github.com/vindi/vindi-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vindi",
+            "email": "contato@vindi.com.br",
+            "homepage": "https://www.vindi.com.br/"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "guzzlehttp/guzzle": "^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vindi\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vindi\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
