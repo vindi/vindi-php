@@ -1,29 +1,35 @@
 language: php
 
+sudo: false
+
 php:
-  - 5.4
   - 5.5
   - 5.6
   - 7.0
   - hhvm
 
-# This triggers builds to run on the new TravisCI infrastructure.
-# See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
-sudo: false
-
 matrix:
+  include:
+    - php: 5.5
+      env: COLLECT_COVERAGE=true
+    - php: 5.6
+      env: COLLECT_COVERAGE=true
+    - php: 7.0
+    - php: hhvm
   allow_failures:
     - php: 7.0
-  include:
-    - php: 5.4
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
+  fast_finish: true
 
-before_script:
-  - travis_retry composer self-update
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - travis_retry composer install --prefer-dist
 
 script:
-  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  - phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_script:
-  - if [[ $TRAVIS_PHP_VERSION != 'hhvm' && $TRAVIS_PHP_VERSION != '7.0' ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover; fi
+ - wget https://scrutinizer-ci.com/ocular.phar
+ - if [ "$COLLECT_COVERAGE" == "true" ]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover; fi
