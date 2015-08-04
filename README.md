@@ -7,21 +7,19 @@
 [![Nota de Qualidade][ico-code-quality]][link-code-quality]
 [![Downloads no Total][ico-downloads]][link-downloads]
 
-**Nota: Esta é uma versão em desenvolvimento ativo, não devendo ser utilizada em produção.**
-
-@todo description
+Este pacote consiste em um SDK em PHP para a [API de Recorrência](link-introducao-api) da [Vindi](link-vindi).
 
 ## Instalação
 
 Via Composer
 
-``` bash
-$ composer require vindi/vindi-php
+```bash
+composer require vindi/vindi-php
 ```
 
-## Uso
+## Exemplo de Uso
 
-``` php
+```php
 $customerService = new Vindi\Customer;
 $customers = $customerService->all();
 
@@ -29,6 +27,10 @@ foreach($customers as $customer) {
     echo $customer->name . '<br />';
 }
 ```
+
+**Nota:** Para acesso à API, a sua chave de acesso a API deverá ser configurada como uma variável de *environment* do PHP.
+Para isso, utilize um pacote como o [phpdotenv](https://github.com/vlucas/phpdotenv) ou carregue através do comando 
+`putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');`, que deverá estar posicionado anteriormente à utilização dos comandos do SDK.
 
 ## Changelog
 
@@ -44,7 +46,7 @@ $ composer test
 
 Por favor, veja o [CONTRIBUTING](CONTRIBUTING.md) para detalhes.
 
-## Security
+## Segurança
 
 Se você descobrir qualquer questão relacionada a segurança, por favor, envie um e-mail para contato@vindi.com.br ao invés de utilizar os issues.
 
@@ -71,3 +73,6 @@ GNU GPLv3. Por favor, veja o [Arquivo de Licença](license.txt) para mais inform
 [link-downloads]: https://packagist.org/packages/vindi/vindi-php
 [link-author]: https://github.com/vindi
 [link-contributors]: ../../contributors
+
+[link-vindi]: https://www.vindi.com.br
+[link-introducao-api]: http://atendimento.vindi.com.br/hc/pt-br/articles/203020644-Introdu%C3%A7%C3%A3o-%C3%A0-API-de-Recorr%C3%AAncia

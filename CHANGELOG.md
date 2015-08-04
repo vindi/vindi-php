@@ -2,19 +2,6 @@
 
 Todas as mudanças notáveis serão documentadas neste arquivo.
 
-## 0.0.1 - 31/07/2015 
+## 1.0.0 - 04/08/2015
 
-### Adicionado
-- Nothing
-
-### Depreciado
-- Nothing
-
-### Arrumado
-- Nothing
-
-### Removido
-- Nothing
-
-### Segurança
-- Nothing
+- Versão inicial e funcional do SDK.
