@@ -55,7 +55,7 @@ class ApiRequester
 
         $content = $response->getBody()->getContents();
 
-        $decoded = json_decode($content); // parse as array
+        $decoded = json_decode($content); // parse as object
         reset($decoded);
         $data = current($decoded); // get first attribute from array, e.g.: subscription, subscriptions, errors.
 

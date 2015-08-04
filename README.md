@@ -20,17 +20,89 @@ composer require vindi/vindi-php
 ## Exemplo de Uso
 
 ```php
-$customerService = new Vindi\Customer;
-$customers = $customerService->all();
+// Coloca a chave da Vindi (VINDI_API_KEY) no environment do PHP.
+putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');
 
-foreach($customers as $customer) {
-    echo $customer->name . '<br />';
+// Instancia o serviço de Customers (Clientes)
+$customerService = new Vindi\Customer;
+
+// Cria um novo cliente:
+$customer = $customerService->create([
+    'name'  => 'Teste da Silva', 
+    'email' => 'contato@vindi.com.br',
+]);
+
+echo "Novo cliente criado com o id '{$customer->id}'.<br />";
+
+// Busca todos os clientes, ordenando pelo campo 'created_at' descendente.
+$customers = $customerService->all(['sort_by' => 'created_at', 'sort_order' => 'desc']);
+
+// Para cada cliente da array de clientes
+foreach ($customers as $customer) {
+    $customerService->update($customer->id, [
+        'notes' => 'Este cliente foi atualizado pelo SDK PHP.',
+    ]);
+    
+    echo "O cliente '{$customer->name}' foi atualizado!<br />";
 }
 ```
 
-**Nota:** Para acesso à API, a sua chave de acesso a API deverá ser configurada como uma variável de *environment* do PHP.
-Para isso, utilize um pacote como o [phpdotenv](https://github.com/vlucas/phpdotenv) ou carregue através do comando 
-`putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');`, que deverá estar posicionado anteriormente à utilização dos comandos do SDK.
+**Nota:** 
+Para acesso à API, a sua chave de acesso a API deverá ser configurada como uma variável de *environment* do PHP.
+Para isso, utilize um pacote como o [phpdotenv](https://github.com/vlucas/phpdotenv) 
+ou carregue através do comando abaixo, que deverá estar posicionado anteriormente à utilização dos comandos do SDK. 
+
+```php
+// Coloca a chave da Vindi (VINDI_API_KEY) no environment do PHP.
+putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');
+
+// Sua lógica aqui
+```
+
+Para mais detalhes sobre quais serviços existem, quais campos enviar e demais informações, 
+[verifique nossa página interativa de uso da API][link-swagger].
+
+## Trabalhando com Webhooks
+
+Este pacote torna possível a interpretação dos [webhooks enviados pela Vindi][link-webhooks].
+Para tal, disponibilize uma URL/rota que será acessível pela web e nela utilize a classe `Vindi\WebhookHandler`
+para a interpretação dos eventos:
+
+```php
+// Instancia o objeto que irá lidar com os Webhooks.
+$webhookHandler = new Vindi\WebhookHandler();
+
+// Pega o evento interpretado pelo objeto.
+$event = $webhookHandler->handle();
+
+// Decide a ação com base no evento
+switch ($event->type) {
+    case 'subscription_canceled':
+        // Lidar com o evento de Assinatura cancelada.
+        break;
+    case 'subscription_created':
+        // Lidar com o evento de Assinatura efetuada
+        break;
+    case 'charge_rejected':
+        // Lidar com o evento de Cobrança rejeitada
+        break;
+    case 'bill_created':
+        // Lidar com o evento de Fatura emitida
+        break;
+    case 'bill_paid':
+        // Lidar com o evento de Fatura paga
+        break;
+    case 'period_created':
+        // Lidar com o evento de Período criado
+        break;
+    case 'test':
+        // Lidar com o evento de Teste da URL
+        break;
+    default:
+        // Lidar com falhas e eventos novos ou desconhecidos 
+        break;
+}
+```
 
 ## Changelog
 
@@ -39,7 +111,7 @@ Por favor, veja o [CHANGELOG](CHANGELOG.md) para mais informações sobre o que 
 ## Testando
 
 ``` bash
-$ composer test
+composer test
 ```
 
 ## Contribuindo
@@ -48,12 +120,18 @@ Por favor, veja o [CONTRIBUTING](CONTRIBUTING.md) para detalhes.
 
 ## Segurança
 
-Se você descobrir qualquer questão relacionada a segurança, por favor, envie um e-mail para contato@vindi.com.br ao invés de utilizar os issues.
+Se você descobrir qualquer questão relacionada a segurança, por favor, 
+envie um e-mail para contato@vindi.com.br ao invés de utilizar os issues.
 
 ## Créditos
 
 - [Vindi][link-author]
 - [Todos os Contribuidores][link-contributors]
+
+## Suporte
+Para suporte ao sdk e dúvidas relacionadas a Vindi você pode seguir pelos canais:
+- [Atendimento Vindi](http://atendimento.vindi.com.br/hc/pt-br)
+- [Issues do GitHub](https://github.com/vindi/vindi-php/issues)
 
 ## Licença
 
@@ -75,3 +153,5 @@ GNU GPLv3. Por favor, veja o [Arquivo de Licença](license.txt) para mais inform
 [link-contributors]: ../../contributors
 [link-vindi]: https://www.vindi.com.br
 [link-introducao-api]: http://atendimento.vindi.com.br/hc/pt-br/articles/203020644-Introdu%C3%A7%C3%A3o-%C3%A0-API-de-Recorr%C3%AAncia
+[link-webhooks]: http://atendimento.vindi.com.br/hc/pt-br/articles/203305800-Webhooks
+[link-swagger]: http://vindi.github.io/api-docs/dist/

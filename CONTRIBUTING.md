@@ -26,7 +26,7 @@ Se você tem que fazer vários commit intermediários enquanto desenvolve, por f
 ## Rodando os Testes
 
 ``` bash
-$ composer test
+composer test
 ```
 
 
