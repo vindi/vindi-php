@@ -6,7 +6,6 @@ php:
   - 5.5
   - 5.6
   - 7.0
-  - hhvm
 
 matrix:
   include:
@@ -15,7 +14,6 @@ matrix:
     - php: 5.6
       env: COLLECT_COVERAGE=true
     - php: 7.0
-    - php: hhvm
   allow_failures:
     - php: 7.0
   fast_finish: true
