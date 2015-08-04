@@ -1,6 +1,6 @@
-<?php  namespace Vindi;
+<?php namespace Vindi;
 
-class Usage extends ApiRequester
+class Usage extends Resource
 {
     /**
      * The endpoint that will hit the API.
@@ -9,26 +9,6 @@ class Usage extends ApiRequester
      */
     public function endpoint()
     {
-        return $this->pluralizedEndpoint();
-    }
-
-    /**
-     * The pluralized endpoint.
-     *
-     * @return string
-     */
-    public function pluralizedEndpoint()
-    {
         return 'usages';
-    }
-
-    /**
-     * The singularized endpoint.
-     *
-     * @return string
-     */
-    public function singularizedEndpoint()
-    {
-        return 'usage';
     }
 }

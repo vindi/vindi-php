@@ -1,6 +1,6 @@
-<?php  namespace Vindi;
+<?php namespace Vindi;
 
-class ProductItem extends ApiRequester
+class ProductItem extends Resource
 {
     /**
      * The endpoint that will hit the API.
@@ -9,26 +9,6 @@ class ProductItem extends ApiRequester
      */
     public function endpoint()
     {
-        return $this->pluralizedEndpoint();
-    }
-
-    /**
-     * The pluralized endpoint.
-     *
-     * @return string
-     */
-    public function pluralizedEndpoint()
-    {
         return 'product_items';
-    }
-
-    /**
-     * The singularized endpoint.
-     *
-     * @return string
-     */
-    public function singularizedEndpoint()
-    {
-        return 'product_item';
     }
 }

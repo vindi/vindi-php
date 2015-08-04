@@ -1,6 +1,6 @@
 <?php namespace Vindi;
 
-class Bill extends ApiRequester
+class Bill extends Resource
 {
     /**
      * The endpoint that will hit the API.
@@ -9,26 +9,18 @@ class Bill extends ApiRequester
      */
     public function endpoint()
     {
-        return $this->pluralizedEndpoint();
-    }
-
-    /**
-     * The pluralized endpoint.
-     *
-     * @return string
-     */
-    public function pluralizedEndpoint()
-    {
         return 'bills';
     }
 
     /**
-     * The singularized endpoint.
+     * Make a POST request to bills/{id}/approve.
      *
-     * @return string
+     * @param int $id The resource's id.
+     *
+     * @return mixed
      */
-    public function singularizedEndpoint()
+    public function approve($id)
     {
-        return 'bill';
+        return $this->post($id, 'approve');
     }
 }

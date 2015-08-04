@@ -1,6 +1,6 @@
 <?php namespace Vindi;
 
-class Transaction extends ApiRequester
+class Transaction extends Resource
 {
     /**
      * The endpoint that will hit the API.
@@ -9,26 +9,6 @@ class Transaction extends ApiRequester
      */
     public function endpoint()
     {
-        return $this->pluralizedEndpoint();
-    }
-
-    /**
-     * The pluralized endpoint.
-     *
-     * @return string
-     */
-    public function pluralizedEndpoint()
-    {
         return 'transactions';
-    }
-
-    /**
-     * The singularized endpoint.
-     *
-     * @return string
-     */
-    public function singularizedEndpoint()
-    {
-        return 'transaction';
     }
 }

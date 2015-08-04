@@ -1,6 +1,6 @@
-<?php  namespace Vindi;
+<?php namespace Vindi;
 
-class Discount extends ApiRequester
+class Discount extends Resource
 {
     /**
      * The endpoint that will hit the API.
@@ -9,26 +9,6 @@ class Discount extends ApiRequester
      */
     public function endpoint()
     {
-        return $this->pluralizedEndpoint();
-    }
-
-    /**
-     * The pluralized endpoint.
-     *
-     * @return string
-     */
-    public function pluralizedEndpoint()
-    {
         return 'discounts';
-    }
-
-    /**
-     * The singularized endpoint.
-     *
-     * @return string
-     */
-    public function singularizedEndpoint()
-    {
-        return 'discount';
     }
 }

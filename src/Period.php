@@ -1,6 +1,6 @@
-<?php  namespace Vindi;
+<?php namespace Vindi;
 
-class Period extends ApiRequester
+class Period extends Resource
 {
     /**
      * The endpoint that will hit the API.
@@ -9,26 +9,18 @@ class Period extends ApiRequester
      */
     public function endpoint()
     {
-        return $this->pluralizedEndpoint();
-    }
-
-    /**
-     * The pluralized endpoint.
-     *
-     * @return string
-     */
-    public function pluralizedEndpoint()
-    {
         return 'periods';
     }
 
     /**
-     * The singularized endpoint.
+     * Make a POST request to periods/{id}/bill.
      *
-     * @return string
+     * @param int $id The resource's id.
+     *
+     * @return mixed
      */
-    public function singularizedEndpoint()
+    public function bill($id)
     {
-        return 'period';
+        return $this->post($id, 'bill');
     }
 }

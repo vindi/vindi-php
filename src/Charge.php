@@ -1,6 +1,6 @@
 <?php namespace Vindi;
 
-class Charge extends ApiRequester
+class Charge extends Resource
 {
     /**
      * The endpoint that will hit the API.
@@ -9,26 +9,34 @@ class Charge extends ApiRequester
      */
     public function endpoint()
     {
-        return $this->pluralizedEndpoint();
-    }
-
-    /**
-     * The pluralized endpoint.
-     *
-     * @return string
-     */
-    public function pluralizedEndpoint()
-    {
         return 'charges';
     }
 
     /**
-     * The singularized endpoint.
+     * Make a POST request to charges/{id}/reissue.
      *
-     * @return string
+     * @param int   $id The resource's id.
+     *
+     * @param array $form_params
+     *
+     * @return mixed
      */
-    public function singularizedEndpoint()
+    public function reissue($id, $form_params = [])
     {
-        return 'charge';
+        return $this->post($id, 'reissue', $form_params);
+    }
+
+    /**
+     * Make a POST request to charges/{id}/charge.
+     *
+     * @param int   $id The resource's id.
+     *
+     * @param array $form_params
+     *
+     * @return mixed
+     */
+    public function charge($id, $form_params = [])
+    {
+        return $this->post($id, 'charge', $form_params);
     }
 }

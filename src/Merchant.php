@@ -1,6 +1,6 @@
 <?php namespace Vindi;
 
-class Merchant extends ApiRequester
+class Merchant extends Resource
 {
     /**
      * The endpoint that will hit the API.
@@ -8,26 +8,6 @@ class Merchant extends ApiRequester
      * @return string
      */
     public function endpoint()
-    {
-        return $this->singularizedEndpoint();
-    }
-
-    /**
-     * The pluralized endpoint.
-     *
-     * @return string
-     */
-    public function pluralizedEndpoint()
-    {
-        return 'merchants';
-    }
-
-    /**
-     * The singularized endpoint.
-     *
-     * @return string
-     */
-    public function singularizedEndpoint()
     {
         return 'merchant';
     }

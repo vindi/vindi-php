@@ -22,13 +22,6 @@ class VindiTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_be_instantiated()
-    {
-        $this->assertNotNull($this->vindi);
-        $this->assertInstanceOf(Vindi::class, $this->vindi);
-    }
-
-    /** @test */
     public function it_should_get_api_key_from_environment()
     {
         putenv(Vindi::$apiKeyEnvVar);

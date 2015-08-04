@@ -1,8 +1,12 @@
 <?php namespace Vindi;
 
+use GuzzleHttp\Exception\ClientException;
+use Vindi\Exceptions\ValidationException;
 use Vindi\Http\Client;
+use Vindi\Exceptions\RequestException;
+use Vindi\Exceptions\RateLimitException;
 
-abstract class ApiRequester
+class ApiRequester
 {
     /**
      * @var \Vindi\Http\Client
@@ -10,25 +14,9 @@ abstract class ApiRequester
     public $client;
 
     /**
-     * The endpoint at default state that will hit the API.
-     *
-     * @return string
+     * @var mixed
      */
-    public abstract function endpoint();
-
-    /**
-     * The pluralized endpoint.
-     *
-     * @return string
-     */
-    public abstract function pluralizedEndpoint();
-
-    /**
-     * The singularized endpoint.
-     *
-     * @return string
-     */
-    public abstract function singularizedEndpoint();
+    public $lastResponse;
 
     /**
      * ApiRequester constructor.
@@ -47,134 +35,79 @@ abstract class ApiRequester
      */
     public function request($method, $endpoint, array $options = [])
     {
-        $response = $this->client->request($method, $endpoint, $options);
+        try {
+            $response = $this->client->request($method, $endpoint, $options);
+        } catch (ClientException $e) {
+            $response = $e->getResponse();
+        }
+
+        return $this->response($response);
+    }
+
+    /**
+     * @param mixed $response
+     *
+     * @return object
+     */
+    public function response($response)
+    {
+        $this->lastResponse = $response;
 
         $content = $response->getBody()->getContents();
 
-        return json_decode($content);
+        $decoded = json_decode($content); // parse as array
+        reset($decoded);
+        $data = current($decoded); // get first attribute from array, e.g.: subscription, subscriptions, errors.
+
+        $this->checkRateLimit($response)
+            ->checkForErrors($response, $data);
+
+        return $data;
     }
 
     /**
-     * Build url that will hit the API.
+     * @param $response
      *
-     * @param int    $id                 The resource's id.
-     * @param string $additionalEndpoint Additional endpoint that will be appended to the URL.
-     *
-     * @return string
+     * @return $this
+     * @throws \Vindi\Exceptions\RateLimitException
      */
-    public function url($id = null, $additionalEndpoint = null)
+    private function checkRateLimit($response)
     {
-        $endpoint = $this->endpoint();
+        $remaining = $response->getHeader('Rate-Limit-Remaining') ? (int) $response->getHeader('Rate-Limit-Remaining')[0] : false;
 
-        if (! is_null($id)) {
-            $endpoint .= '/' . $id;
+        if ($remaining === 0) {
+            throw new RateLimitException($response);
         }
-        if (! is_null($additionalEndpoint)) {
-            $endpoint .= '/' . $additionalEndpoint;
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $response
+     * @param mixed $data
+     *
+     * @return $this
+     * @throws \Vindi\Exceptions\RequestException
+     */
+    private function checkForErrors($response, $data)
+    {
+        $status = $response->getStatusCode();
+
+        $data = (array) $data;
+
+        $statusClass = (int) ($status / 100);
+
+        if (($statusClass === 4) || ($statusClass === 5)) {
+            switch ($status) {
+                case 422:
+                    throw new ValidationException($status, $data);
+                    break;
+                default:
+                    throw new RequestException($status, $data);
+                    break;
+            }
         }
 
-        return $endpoint;
-    }
-
-    /**
-     * Retrieve all resources.
-     *
-     * @param array $params Pagination and Filter parameters.
-     *
-     * @return mixed
-     */
-    public function all(array $params = [])
-    {
-        $response = $this->request('GET', $this->url(), ['query' => $params]);
-
-        return $response->{$this->pluralizedEndpoint()};
-    }
-
-    /**
-     * Create a new resource.
-     *
-     * @param array $form_params The request body.
-     *
-     * @return mixed
-     */
-    public function create(array $form_params)
-    {
-        $response = $this->request('POST', $this->url(), compact('form_params'));
-
-        return $response->{$this->singularizedEndpoint()};
-    }
-
-    /**
-     * Retrieve a specific resource.
-     *
-     * @param int $id The resource's id.
-     *
-     * @return mixed
-     */
-    public function retrieve($id)
-    {
-        $response = $this->request('GET', $this->url($id));
-
-        return $response->{$this->singularizedEndpoint()};
-    }
-
-    /**
-     * Update a specific resource.
-     *
-     * @param int   $id          The resource's id.
-     * @param array $form_params The request body.
-     *
-     * @return mixed
-     */
-    public function update($id, array $form_params)
-    {
-        $response = $this->request('PUT', $this->url($id), compact('form_params'));
-
-        return $response->{$this->singularizedEndpoint()};
-    }
-
-    /**
-     * Delete a specific resource.
-     *
-     * @param int $id The resource's id.
-     *
-     * @return mixed
-     */
-    public function delete($id)
-    {
-        $response = $this->request('DELETE', $this->url($id));
-
-        return $response->{$this->singularizedEndpoint()};
-    }
-
-    /**
-     * Make a GET request to an additional endpoint for a specific resource.
-     *
-     * @param int    $id                 The resource's id.
-     * @param string $additionalEndpoint Additional endpoint that will be appended to the URL.
-     *
-     * @return mixed
-     */
-    public function get($id, $additionalEndpoint)
-    {
-        $response = $this->request('GET', $this->url($id, $additionalEndpoint));
-
-        return $response->$additionalEndpoint;
-    }
-
-    /**
-     * Make a POST request to an additional endpoint for a specific resource.
-     *
-     * @param int    $id                 The resource's id.
-     * @param string $additionalEndpoint Additional endpoint that will be appended to the URL.
-     * @param array  $form_params        The request body.
-     *
-     * @return mixed
-     */
-    public function post($id, $additionalEndpoint, array $form_params = [])
-    {
-        $response = $this->request('POST', $this->url($id, $additionalEndpoint), compact('form_params'));
-
-        return $response->{$this->singularizedEndpoint()};
+        return $this;
     }
 }

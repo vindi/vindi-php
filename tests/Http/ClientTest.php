@@ -20,16 +20,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_instantiate_client()
-    {
-        $this->assertNotNull($this->client);
-        $this->assertInstanceOf(Client::class, $this->client);
-    }
-
-    /** @test */
     public function it_should_call_request()
     {
-        $response = $this->client->request('GET', 'http://127.0.0.1');
+        $response = $this->client->request('GET', 'http://google.com');
 
         $this->assertNotNull($response);
     }
