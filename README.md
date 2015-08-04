@@ -7,7 +7,7 @@
 [![Nota de Qualidade][ico-code-quality]][link-code-quality]
 [![Downloads no Total][ico-downloads]][link-downloads]
 
-Este pacote consiste em um SDK em PHP para a [API de Recorrência](link-introducao-api) da [Vindi](link-vindi).
+Este pacote consiste em um SDK em PHP para a [API de Recorrência][link-introducao-api] da [Vindi][link-vindi].
 
 ## Instalação
 
@@ -73,6 +73,5 @@ GNU GPLv3. Por favor, veja o [Arquivo de Licença](license.txt) para mais inform
 [link-downloads]: https://packagist.org/packages/vindi/vindi-php
 [link-author]: https://github.com/vindi
 [link-contributors]: ../../contributors
-
 [link-vindi]: https://www.vindi.com.br
 [link-introducao-api]: http://atendimento.vindi.com.br/hc/pt-br/articles/203020644-Introdu%C3%A7%C3%A3o-%C3%A0-API-de-Recorr%C3%AAncia
