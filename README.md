@@ -1,7 +1,7 @@
 # vindi-php
 
 [![Última Versão no Packagist][ico-version]][link-packagist]
-[![Licença do Software][ico-license]](LICENSE.md)
+[![Licença do Software][ico-license]](license.txt)
 [![Status de Build][ico-travis]][link-travis]
 [![Status de Coverage][ico-scrutinizer]][link-scrutinizer]
 [![Nota de Qualidade][ico-code-quality]][link-code-quality]
@@ -60,7 +60,7 @@ Se você descobrir qualquer questão relacionada a segurança, por favor, envie 
 GNU GPLv3. Por favor, veja o [Arquivo de Licença](license.txt) para mais informações.
 
 [ico-version]: https://img.shields.io/packagist/v/vindi/vindi-php.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-GPLv3-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/vindi/vindi-php/master.svg?style=flat-square
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/vindi/vindi-php.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/vindi/vindi-php.svg?style=flat-square
