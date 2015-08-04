@@ -31,12 +31,31 @@ class RateLimitException extends Exception
      */
     public function __construct($response)
     {
-        $this->limit = (int) (count($response->getHeader('Rate-Limit-Limit')) ? $response->getHeader('Rate-Limit-Limit')[0] : 0);
-        $this->reset = (int) (count($response->getHeader('Rate-Limit-Reset')) ? $response->getHeader('Rate-Limit-Reset')[0] : 0);
-        $this->remaining = (int) (count($response->getHeader('Rate-Limit-Remaining')) ? $response->getHeader('Rate-Limit-Remaining')[0] : 0);
-        $this->retryAfter = (int) (count($response->getHeader('Retry-After')) ? $response->getHeader('Retry-After')[0] : 0);
+        $this->limit = $this->getHeaderValue($response, 'Rate-Limit-Limit');
+        $this->reset = $this->getHeaderValue($response, 'Rate-Limit-Reset');
+        $this->remaining = $this->getHeaderValue($response, 'Rate-Limit-Remaining');
+        $this->retryAfter = $this->getHeaderValue($response, 'Retry-After');
 
         $this->message = "O limite de {$this->limit} requisições por minuto para a API foi atingido.";
+    }
+
+    /**
+     * Get first array value from specified header as integer.
+     *
+     * @param mixed  $response API response.
+     * @param string $name     Header name.
+     *
+     * @returns int
+     */
+    private function getHeaderValue($response, $name)
+    {
+        $header = $response->getHeader($name);
+
+        if (! $header || ! count($header)) {
+            return 0;
+        }
+
+        return (int) array_shift($header);
     }
 
     /**

@@ -7,7 +7,7 @@
         "vindi-php-sdk"
     ],
     "homepage": "https://github.com/vindi/vindi-php",
-    "license": "MIT",
+    "license": "GPL-3.0",
     "authors": [
         {
             "name": "Vindi",
