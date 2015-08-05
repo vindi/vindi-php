@@ -6,9 +6,9 @@ class Vindi
 {
     /**
      * This Package SDK Version.
-     * @var float
+     * @var string
      */
-    public static $sdkVersion = 1.0;
+    public static $sdkVersion = '1.0.2';
 
     /**
      * The base URL for the Vindi API.
