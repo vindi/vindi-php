@@ -1,4 +1,6 @@
-<?php namespace Vindi;
+<?php
+
+namespace Vindi;
 
 class Customer extends Resource
 {

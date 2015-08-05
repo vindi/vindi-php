@@ -34,3 +34,4 @@ class VindiTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($key, $random);
     }
 }
+

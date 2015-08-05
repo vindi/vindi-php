@@ -1,4 +1,6 @@
-<?php namespace Vindi;
+<?php
+
+namespace Vindi;
 
 class Invoice extends Resource
 {
@@ -11,5 +13,4 @@ class Invoice extends Resource
     {
         return 'invoices';
     }
-
 }

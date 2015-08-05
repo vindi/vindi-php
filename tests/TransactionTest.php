@@ -1,4 +1,6 @@
-<?php namespace Vindi\Test;
+<?php
+
+namespace Vindi\Test;
 
 use Vindi\Transaction;
 use Vindi\ApiRequester;

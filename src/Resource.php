@@ -1,4 +1,6 @@
-<?php namespace Vindi;
+<?php
+
+namespace Vindi;
 
 abstract class Resource
 {
@@ -20,7 +22,7 @@ abstract class Resource
      *
      * @return string
      */
-    public abstract function endpoint();
+    abstract public function endpoint();
 
     /**
      * Build url that will hit the API.

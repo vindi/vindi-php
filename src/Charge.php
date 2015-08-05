@@ -1,4 +1,6 @@
-<?php namespace Vindi;
+<?php
+
+namespace Vindi;
 
 class Charge extends Resource
 {
@@ -21,7 +23,7 @@ class Charge extends Resource
      *
      * @return mixed
      */
-    public function reissue($id, $form_params = [])
+    public function reissue($id, array $form_params = [])
     {
         return $this->post($id, 'reissue', $form_params);
     }
@@ -35,7 +37,7 @@ class Charge extends Resource
      *
      * @return mixed
      */
-    public function charge($id, $form_params = [])
+    public function charge($id, array $form_params = [])
     {
         return $this->post($id, 'charge', $form_params);
     }

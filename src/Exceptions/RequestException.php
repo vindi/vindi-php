@@ -79,5 +79,4 @@ class RequestException extends Exception
     {
         return $this->messages;
     }
-
 }

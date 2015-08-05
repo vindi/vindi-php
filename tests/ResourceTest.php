@@ -1,4 +1,6 @@
-<?php namespace Vindi\Test;
+<?php
+
+namespace Vindi\Test;
 
 use stdClass;
 use Vindi\ApiRequester;
@@ -109,5 +111,4 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($response, $stdClass);
     }
-
 }

@@ -1,7 +1,6 @@
 <?php namespace Vindi\Http;
 
 use GuzzleHttp\Client as Guzzle;
-
 use Vindi\Vindi;
 
 class Client

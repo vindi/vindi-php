@@ -2,5 +2,4 @@
 
 class WebhookHandleException extends \Exception
 {
-
 }
