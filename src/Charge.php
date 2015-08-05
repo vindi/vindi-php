@@ -18,7 +18,6 @@ class Charge extends Resource
      * Make a POST request to charges/{id}/reissue.
      *
      * @param int   $id The resource's id.
-     *
      * @param array $form_params
      *
      * @return mixed
@@ -32,7 +31,6 @@ class Charge extends Resource
      * Make a POST request to charges/{id}/charge.
      *
      * @param int   $id The resource's id.
-     *
      * @param array $form_params
      *
      * @return mixed
