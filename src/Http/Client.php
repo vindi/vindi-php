@@ -29,6 +29,7 @@ class Client
                 ],
             ],
             'timeout'         => 60,
+            'verify'          => Vindi::isSafeMode()
         ]);
     }
 

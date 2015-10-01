@@ -23,11 +23,36 @@ class Vindi
     public static $apiKeyEnvVar = 'VINDI_API_KEY';
 
     /**
+     * Test mode variable - not safe
+     * You SHOULD NOT use active testMode in production environment
+     * @var bool
+     */
+    private static $testMode = false;
+
+    /**
      * Get Vindi API Key from environment.
      * @return string
      */
     public function getApiKey()
     {
         return getenv(static::$apiKeyEnvVar);
+    }
+
+    /**
+     * Set test mode
+     * You SHOULD NOT use active testMode in production environment
+     * @param bool $testMode
+     */
+    public static function setUnsafeTestMode($testMode = false)
+    {
+        self::$testMode = $testMode;
+    }
+
+    /**
+     * Verify if safe mode is active
+     */
+    public static function isSafeMode()
+    {
+        return self::$testMode == false;
     }
 }
