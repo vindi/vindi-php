@@ -67,7 +67,7 @@ abstract class Resource
      */
     public function create(array $form_params = [])
     {
-        return $this->apiRequester->request('POST', $this->url(), compact('form_params'));
+        return $this->apiRequester->request('POST', $this->url(), ['json' => $form_params]);
     }
 
     /**
@@ -92,7 +92,7 @@ abstract class Resource
      */
     public function update($id = null, array $form_params = [])
     {
-        return $this->apiRequester->request('PUT', $this->url($id), compact('form_params'));
+        return $this->apiRequester->request('PUT', $this->url($id), ['json' => $form_params]);
     }
 
     /**
@@ -131,6 +131,6 @@ abstract class Resource
      */
     public function post($id = null, $additionalEndpoint = null, array $form_params = [])
     {
-        return $this->apiRequester->request('POST', $this->url($id, $additionalEndpoint), compact('form_params'));
+        return $this->apiRequester->request('POST', $this->url($id, $additionalEndpoint), ['json' => $form_params]);
     }
 }
