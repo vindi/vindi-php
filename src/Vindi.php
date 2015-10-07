@@ -37,6 +37,6 @@ class Vindi
      */
     public function getCertPath()
     {
-        return realpath(sprintf('%s/%s', dirname(__FILE__), '/../ssl/ca-bundle.crt'));
+        return realpath(sprintf('%s/%s', dirname(__FILE__), '/../data/ssl/ca-bundle.crt'));
     }
 }
