@@ -22,7 +22,7 @@ class VindiTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_get_api_key_from_environment()
+    public function itShouldGetApiKeyFromEnvironment()
     {
         putenv(Vindi::$apiKeyEnvVar);
         $key = $this->vindi->getApiKey();
@@ -33,5 +33,10 @@ class VindiTest extends \PHPUnit_Framework_TestCase
         $key = $this->vindi->getApiKey();
         $this->assertEquals($key, $random);
     }
-}
 
+    /** @test */
+    public function certFileShouldExists()
+    {
+        $this->assertFileExists($this->vindi->getCertPath());
+    }
+}

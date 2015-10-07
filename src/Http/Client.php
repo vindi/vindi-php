@@ -28,7 +28,8 @@ class Client
                     'User-Agent'   => trim('Vindi-PhpSdk/' . Vindi::$sdkVersion . "; {$host}"),
                 ],
             ],
-            'timeout'         => 60,
+            'verify'  => $vindi->getCertPath(),
+            'timeout' => 60,
         ]);
     }
 
