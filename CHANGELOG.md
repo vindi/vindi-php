@@ -2,6 +2,9 @@
 
 Todas as mudanças notáveis serão documentadas neste arquivo.
 
+## 1.0.4 - 02/10/2015
+- Add CA Bundle
+
 ## 1.0.3 - 02/10/2015
 - Change x-www-form-urlencoded to json
 
