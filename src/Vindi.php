@@ -8,7 +8,7 @@ class Vindi
      * This Package SDK Version.
      * @var string
      */
-    public static $sdkVersion = '1.0.3';
+    public static $sdkVersion = '1.0.4';
 
     /**
      * The base URL for the Vindi API.
@@ -29,5 +29,14 @@ class Vindi
     public function getApiKey()
     {
         return getenv(static::$apiKeyEnvVar);
+    }
+
+    /**
+     * Get CA Bundle Path.
+     * @return string
+     */
+    public function getCertPath()
+    {
+        return realpath(sprintf('%s/%s', dirname(__FILE__), '/../data/ssl/ca-bundle.crt'));
     }
 }

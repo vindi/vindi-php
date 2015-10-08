@@ -33,5 +33,10 @@ class VindiTest extends \PHPUnit_Framework_TestCase
         $key = $this->vindi->getApiKey();
         $this->assertEquals($key, $random);
     }
-}
 
+    /** @test */
+    public function cert_file_should_exists()
+    {
+        $this->assertFileExists($this->vindi->getCertPath());
+    }
+}
