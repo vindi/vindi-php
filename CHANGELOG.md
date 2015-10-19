@@ -2,7 +2,10 @@
 
 Todas as mudanças notáveis serão documentadas neste arquivo.
 
-## 1.0.4 - 02/10/2015
+## 1.0.5 - 19/10/2015
+- Fix to throw RateLimitException based on HTTP status code 429
+
+## 1.0.4 - 08/10/2015
 - Add CA Bundle
 
 ## 1.0.3 - 02/10/2015

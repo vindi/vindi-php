@@ -8,7 +8,7 @@ class Vindi
      * This Package SDK Version.
      * @var string
      */
-    public static $sdkVersion = '1.0.4';
+    public static $sdkVersion = '1.0.5';
 
     /**
      * The base URL for the Vindi API.
