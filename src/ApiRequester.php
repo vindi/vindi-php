@@ -76,11 +76,8 @@ class ApiRequester
      */
     private function checkRateLimit(ResponseInterface $response)
     {
-        $remaining = $response->getHeader('Rate-Limit-Remaining') ? (int) $response->getHeader('Rate-Limit-Remaining')[0] : false;
-
-        if ($remaining === 0) {
+        if (429 === $response->getStatusCode())
             throw new RateLimitException($response);
-        }
 
         return $this;
     }
