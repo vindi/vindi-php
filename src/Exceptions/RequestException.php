@@ -25,19 +25,25 @@ class RequestException extends Exception
     protected $messages;
 
     /**
+     * @var array
+     **/
+    private $lastOptions;
+
+    /**
      * ValidationException constructor.
      *
      * @param int   $status
      * @param mixed $errors
      */
-    public function __construct($status, $errors)
+    public function __construct($status, $errors, array $lastOptions = [])
     {
-        $this->errors = $errors;
-        $this->code = $status;
+        $this->lastOptions = $lastOptions;
+        $this->errors      = $errors;
+        $this->code        = $status;
 
-        $this->ids = [];
+        $this->ids        = [];
         $this->parameters = [];
-        $this->messages = [];
+        $this->messages   = [];
 
         foreach ($errors as $error) {
             $this->ids[] = $error->id;
@@ -78,5 +84,14 @@ class RequestException extends Exception
     public function getMessages()
     {
         return $this->messages;
+    }
+
+    /**
+     * Return the last request body
+     * @return string
+     **/
+    public function getRequestBody()
+    {
+        return json_encode($this->lastOptions['json']);
     }
 }

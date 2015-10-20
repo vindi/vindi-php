@@ -22,12 +22,13 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
                 'message'   => 'message 2',
             ],
         ];
-        $exception = new ValidationException($status, $errors);
+        $exception = new ValidationException($status, $errors, ['json' => ['parameter' =>'content']]);
 
         $this->assertSame($status, $exception->getCode());
         $this->assertSame($errors, $exception->getErrors());
         $this->assertSame(['id 1', 'id 2'], $exception->getIds());
         $this->assertSame(['parameter 1', 'parameter 2'], $exception->getParameters());
         $this->assertSame(['message 1', 'message 2'], $exception->getMessages());
+        $this->assertEquals('{"parameter":"content"}', $exception->getRequestBody());
     }
 }
