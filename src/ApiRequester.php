@@ -22,6 +22,11 @@ class ApiRequester
     public $lastResponse;
 
     /**
+     * @var array
+     */
+    public $lastOptions;
+
+    /**
      * ApiRequester constructor.
      */
     public function __construct()
@@ -38,6 +43,7 @@ class ApiRequester
      */
     public function request($method, $endpoint, array $options = [])
     {
+        $this->lastOptions = $options;
         try {
             $response = $this->client->request($method, $endpoint, $options);
         } catch (ClientException $e) {
@@ -100,9 +106,9 @@ class ApiRequester
         if (($statusClass === 4) || ($statusClass === 5)) {
             switch ($status) {
                 case 422:
-                    throw new ValidationException($status, $data);
+                    throw new ValidationException($status, $data, $this->lastOptions);
                 default:
-                    throw new RequestException($status, $data);
+                    throw new RequestException($status, $data, $this->lastOptions);
             }
         }
 

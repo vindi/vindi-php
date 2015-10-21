@@ -2,8 +2,9 @@
 
 Todas as mudanças notáveis serão documentadas neste arquivo.
 
-## 1.0.5 - 19/10/2015
-- Fix to throw RateLimitException based on HTTP status code 429
+## 1.0.5 - 21/10/2015
+- Add a method to get request body in RequestException
+- Fix throw RateLimitException based on HTTP status code 429
 
 ## 1.0.4 - 08/10/2015
 - Add CA Bundle

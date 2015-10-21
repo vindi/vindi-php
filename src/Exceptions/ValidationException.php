@@ -8,10 +8,10 @@ class ValidationException extends RequestException
      * @param int   $status
      * @param mixed $errors
      */
-    public function __construct($status, $errors)
+    public function __construct($status, $errors, array $lastOptions = [])
     {
-        parent::__construct($status, $errors);
+        parent::__construct($status, $errors, $lastOptions);
 
-        $this->message = "Erros de validação foram encontrados!";
+        $this->message     = "Erros de validação foram encontrados!";
     }
 }
