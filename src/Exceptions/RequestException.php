@@ -47,7 +47,8 @@ class RequestException extends Exception
 
         foreach ($errors as $error) {
             $this->ids[] = $error->id;
-            $this->parameters[] = $error->parameter;
+            if(isset($error->parameter))
+                $this->parameters[] = $error->parameter;
             $this->messages[] = $error->message;
         }
 
