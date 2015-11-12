@@ -133,4 +133,13 @@ abstract class Resource
     {
         return $this->apiRequester->request('POST', $this->url($id, $additionalEndpoint), ['json' => $form_params]);
     }
+
+    /**
+     * Return the last response from a preview request
+     *
+     * @return mixed
+     */
+    public function getLastResponse(){
+       return $this->apiRequester->lastResponse;
+    }
 }
