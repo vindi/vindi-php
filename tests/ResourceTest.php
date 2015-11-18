@@ -5,6 +5,7 @@ namespace Vindi\Test;
 use stdClass;
 use Vindi\ApiRequester;
 use Vindi\Resource;
+use GuzzleHttp\Psr7\Response;
 
 class ResourceTest extends \PHPUnit_Framework_TestCase
 {
@@ -110,5 +111,26 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
         $response = $this->resource->post(1, 'test', []);
 
         $this->assertSame($response, $stdClass);
+    }
+
+    /** @test */
+    public function it_should_return_null_when_no_request_was_sent()
+    {
+        $lastResponse = $this->resource->getLastResponse();
+
+        $this->assertSame($lastResponse, NULL);
+    }
+
+    /** @test */
+    public function it_should_return_last_request_from_a_resource()
+    {
+        $response = new Response(200, [], '{"test": "ok"}');
+        $this->resource->apiRequester->method('request')->willReturn($response);
+        $this->resource->apiRequester->lastResponse = $response;
+
+        $response = $this->resource->apiRequester->request('GET', 'test');
+        $lastResponse = $this->resource->getLastResponse();
+
+        $this->assertSame($response, $lastResponse);
     }
 }

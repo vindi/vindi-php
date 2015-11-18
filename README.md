@@ -28,7 +28,7 @@ $customerService = new Vindi\Customer;
 
 // Cria um novo cliente:
 $customer = $customerService->create([
-    'name'  => 'Teste da Silva', 
+    'name'  => 'Teste da Silva',
     'email' => 'contato@vindi.com.br',
 ]);
 
@@ -42,15 +42,15 @@ foreach ($customers as $customer) {
     $customerService->update($customer->id, [
         'notes' => 'Este cliente foi atualizado pelo SDK PHP.',
     ]);
-    
+
     echo "O cliente '{$customer->name}' foi atualizado!<br />";
 }
 ```
 
-**Nota:** 
+**Nota:**
 Para acesso à API, a sua chave de acesso a API deverá ser configurada como uma variável de *environment* do PHP.
-Para isso, utilize um pacote como o [phpdotenv](https://github.com/vlucas/phpdotenv) 
-ou carregue através do comando abaixo, que deverá estar posicionado anteriormente à utilização dos comandos do SDK. 
+Para isso, utilize um pacote como o [phpdotenv](https://github.com/vlucas/phpdotenv)
+ou carregue através do comando abaixo, que deverá estar posicionado anteriormente à utilização dos comandos do SDK.
 
 ```php
 // Coloca a chave da Vindi (VINDI_API_KEY) no environment do PHP.
@@ -59,8 +59,23 @@ putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');
 // Sua lógica aqui
 ```
 
-Para mais detalhes sobre quais serviços existem, quais campos enviar e demais informações, 
+Para mais detalhes sobre quais serviços existem, quais campos enviar e demais informações,
 [verifique nossa página interativa de uso da API][link-swagger].
+
+**Response:**
+Caso precise de mais detalhes sobre a resposta de cada request, utilize o método `getLastResponse`. Se nenhum request foi efetuado anteriormente este método retornará `NULL`.
+
+```php
+// Retorna os dados da última resposta recebida dos servidores da Vindi
+$lastResponse = $customerService->getLastResponse();
+
+// Retorna o HTTP Status Code
+$lastResponse->getStatusCode();
+// Retorna o todos os headers
+$lastResponse->getHeaders();
+// Retorna um único header
+$lastResponse->getHeader('Header-Name');
+```
 
 ## Trabalhando com Webhooks
 
@@ -99,7 +114,7 @@ switch ($event->type) {
         // Lidar com o evento de Teste da URL
         break;
     default:
-        // Lidar com falhas e eventos novos ou desconhecidos 
+        // Lidar com falhas e eventos novos ou desconhecidos
         break;
 }
 ```
@@ -120,7 +135,7 @@ Por favor, veja o [CONTRIBUTING](CONTRIBUTING.md) para detalhes.
 
 ## Segurança
 
-Se você descobrir qualquer questão relacionada a segurança, por favor, 
+Se você descobrir qualquer questão relacionada a segurança, por favor,
 envie um e-mail para contato@vindi.com.br ao invés de utilizar os issues.
 
 ## Créditos
