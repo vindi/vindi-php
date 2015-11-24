@@ -30,6 +30,9 @@ class Client
             ],
             'verify'  => $vindi->getCertPath(),
             'timeout' => 60,
+            'curl.options' => [
+                'CURLOPT_SSLVERSION' => 'CURL_SSLVERSION_TLSv1_2',
+            ]
         ]);
     }
 
