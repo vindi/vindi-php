@@ -1,4 +1,6 @@
-# vindi-php
+![alt text align:center](https://www.vindi.com.br/image/vindi-logo-transparente.png "Vindi")
+
+# Vindi - SDK PHP
 
 [![Última Versão no Packagist][ico-version]][link-packagist]
 [![Licença do Software][ico-license]](license.txt)
@@ -7,9 +9,15 @@
 [![Nota de Qualidade][ico-code-quality]][link-code-quality]
 [![Downloads no Total][ico-downloads]][link-downloads]
 
+## Descrição
 Este pacote consiste em um SDK em PHP para a [API de Recorrência][link-introducao-api] da [Vindi][link-vindi].
 
-## Instalação
+# Requisitos
+- PHP >=5.5.0
+- Certificado Digital.
+- Conta ativa na [Vindi](https://www.vindi.com.br "Vindi").
+
+# Instalação
 
 Via Composer
 
@@ -17,9 +25,17 @@ Via Composer
 composer require vindi/vindi-php
 ```
 
-## Exemplo de Uso
+### Teste
+
+``` bash
+composer test
+```
+
+### Exemplo
 
 ```php
+require __DIR__.'/vendor/autoload.php';
+
 // Coloca a chave da Vindi (VINDI_API_KEY) no environment do PHP.
 putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');
 
@@ -35,7 +51,10 @@ $customer = $customerService->create([
 echo "Novo cliente criado com o id '{$customer->id}'.<br />";
 
 // Busca todos os clientes, ordenando pelo campo 'created_at' descendente.
-$customers = $customerService->all(['sort_by' => 'created_at', 'sort_order' => 'desc']);
+$customers = $customerService->all([
+    'sort_by'    => 'created_at',
+    'sort_order' => 'desc'
+]);
 
 // Para cada cliente da array de clientes
 foreach ($customers as $customer) {
@@ -45,18 +64,6 @@ foreach ($customers as $customer) {
 
     echo "O cliente '{$customer->name}' foi atualizado!<br />";
 }
-```
-
-**Nota:**
-Para acesso à API, a sua chave de acesso a API deverá ser configurada como uma variável de *environment* do PHP.
-Para isso, utilize um pacote como o [phpdotenv](https://github.com/vlucas/phpdotenv)
-ou carregue através do comando abaixo, que deverá estar posicionado anteriormente à utilização dos comandos do SDK.
-
-```php
-// Coloca a chave da Vindi (VINDI_API_KEY) no environment do PHP.
-putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');
-
-// Sua lógica aqui
 ```
 
 Para mais detalhes sobre quais serviços existem, quais campos enviar e demais informações,
@@ -77,13 +84,15 @@ $lastResponse->getHeaders();
 $lastResponse->getHeader('Header-Name');
 ```
 
-## Trabalhando com Webhooks
+### Webhooks
 
 Este pacote torna possível a interpretação dos [webhooks enviados pela Vindi][link-webhooks].
 Para tal, disponibilize uma URL/rota que será acessível pela web e nela utilize a classe `Vindi\WebhookHandler`
 para a interpretação dos eventos:
 
 ```php
+require __DIR__.'/vendor/autoload.php';
+
 // Instancia o objeto que irá lidar com os Webhooks.
 $webhookHandler = new Vindi\WebhookHandler();
 
@@ -119,37 +128,25 @@ switch ($event->type) {
 }
 ```
 
-## Changelog
-
-Por favor, veja o [CHANGELOG](CHANGELOG.md) para mais informações sobre o que mudou recentemente.
-
-## Testando
-
-``` bash
-composer test
-```
+## Dúvidas
+Caso necessite de informações sobre a plataforma ou API por favor siga através do canal [Atendimento Vindi](http://atendimento.vindi.com.br/hc/pt-br)[Atendimento Vindi](http://atendimento.vindi.com.br/hc/pt-br)
 
 ## Contribuindo
-
-Por favor, veja o [CONTRIBUTING](CONTRIBUTING.md) para detalhes.
+Por favor, leia o arquivo [CONTRIBUTING.md](CONTRIBUTING.md).
+Caso tenha alguma sugestão ou bug para reportar por favor nos comunique através das [issues](./issues).
 
 ## Segurança
-
 Se você descobrir qualquer questão relacionada a segurança, por favor,
 envie um e-mail para contato@vindi.com.br ao invés de utilizar os issues.
 
-## Créditos
+## Changelog
+Todas as informações sobre cada release pode ser  [CHANGELOG.md](CHANGELOG.md).
 
+## Créditos
 - [Vindi][link-author]
 - [Todos os Contribuidores][link-contributors]
 
-## Suporte
-Para suporte ao sdk e dúvidas relacionadas a Vindi você pode seguir pelos canais:
-- [Atendimento Vindi](http://atendimento.vindi.com.br/hc/pt-br)
-- [Issues do GitHub](https://github.com/vindi/vindi-php/issues)
-
 ## Licença
-
 GNU GPLv3. Por favor, veja o [Arquivo de Licença](license.txt) para mais informações.
 
 [ico-version]: https://img.shields.io/packagist/v/vindi/vindi-php.svg?style=flat-square
