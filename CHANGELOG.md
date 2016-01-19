@@ -2,6 +2,12 @@
 
 Todas as mudanças notáveis serão documentadas neste arquivo.
 
+## 1.0.7 - 29/01/2015
+- Fix Content-Type and User-Agent headers
+
+## 1.0.6 - 29/11/2015
+- Add method getLastResponse in Resource to access informations about last response
+
 ## 1.0.5 - 21/10/2015
 - Add a method to get request body in RequestException
 - Fix throw RateLimitException based on HTTP status code 429
@@ -16,7 +22,7 @@ Todas as mudanças notáveis serão documentadas neste arquivo.
 - Improved code style and type-hinting.
 
 ## 1.0.1 - 04/08/2015
-- Adicionado suporte à webhooks.
+- Add webhooks support.
 
 ## 1.0.0 - 04/08/2015
-- Versão inicial e funcional do SDK.
+- Initial version.
