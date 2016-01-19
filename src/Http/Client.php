@@ -3,48 +3,32 @@
 use GuzzleHttp\Client as Guzzle;
 use Vindi\Vindi;
 
-class Client
+class Client extends Guzzle
 {
-    /**
-     * @var \GuzzleHttp\Client
-     */
-    private $client;
-
     /**
      * Client constructor.
      */
-    public function __construct()
+    public function __construct(array $config = [])
     {
         $vindi = new Vindi;
 
         $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 
-        $this->client = new Guzzle([
+        $config = array_merge([
             'base_uri'        => Vindi::$apiBase,
             'auth'            => [$vindi->getApiKey(), '', 'BASIC'],
-            'request.options' => [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'User-Agent'   => trim('Vindi-PhpSdk/' . Vindi::$sdkVersion . "; {$host}"),
-                ],
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'User-Agent'   => trim('Vindi-PHP/' . Vindi::$sdkVersion . "; {$host}"),
             ],
             'verify'  => $vindi->getCertPath(),
             'timeout' => 60,
             'curl.options' => [
                 'CURLOPT_SSLVERSION' => 'CURL_SSLVERSION_TLSv1_2',
             ]
-        ]);
-    }
+        ], $config);
 
-    /**
-     * @param string $method The HTTP method being used
-     * @param string $uri    The URI being requested, including domain and protocol
-     * @param array  $options
-     *
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function request($method, $uri = null, array $options = [])
-    {
-        return $this->client->request($method, $uri, $options);
+
+        parent::__construct($config);
     }
 }

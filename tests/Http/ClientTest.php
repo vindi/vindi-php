@@ -26,4 +26,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNotNull($response);
     }
+
+    /** @test */
+    public function it_should_have_correct_headers()
+    {
+        $version = \Vindi\Vindi::$sdkVersion;
+        $headers = $this->client->getConfig()['headers'];
+
+        $this->assertEquals($headers['Content-Type'], 'application/json');
+        $this->assertEquals(preg_split('/\;/', $headers['User-Agent'])[0], "Vindi-PHP/{$version}");
+    }
 }
