@@ -13,7 +13,7 @@
 Este pacote consiste em um SDK em PHP para a [API de Recorrência][link-introducao-api] da [Vindi][link-vindi].
 
 # Requisitos
-- PHP >=5.5.0
+- PHP >=5.5.19
 - Certificado Digital.
 - Conta ativa na [Vindi](https://www.vindi.com.br "Vindi").
 
