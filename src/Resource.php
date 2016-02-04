@@ -99,12 +99,13 @@ abstract class Resource
      * Delete a specific resource.
      *
      * @param int $id The resource's id.
+     * @param array $form_params The request body.
      *
      * @return mixed
      */
-    public function delete($id = null)
+    public function delete($id = null, array $form_params = [])
     {
-        return $this->apiRequester->request('DELETE', $this->url($id));
+        return $this->apiRequester->request('DELETE', $this->url($id), ['json' => $form_params]);
     }
 
     /**
