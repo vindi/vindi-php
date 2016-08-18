@@ -13,4 +13,16 @@ class PaymentProfile extends Resource
     {
         return 'payment_profiles';
     }
+
+    /**
+     * Make a POST request to payment_profiles/{id}/verify
+     *
+     * @param int $id The resource's id.
+     *
+     * @return mixed
+     */
+    public function verify($id)
+    {
+        return $this->post($id, 'verify');
+    }
 }
