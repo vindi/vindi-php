@@ -2,6 +2,9 @@
 
 Todas as mudanças notáveis serão documentadas neste arquivo.
 
+## 1.0.9 - 19/08/2016
+- Add method verify in PaymentProfiles
+
 ## 1.0.8 - 04/02/2016
 - Add params to Delete method
 
