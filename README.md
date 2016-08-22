@@ -13,8 +13,8 @@
 Este pacote consiste em um SDK em PHP para a [API de Recorrência][link-introducao-api] da [Vindi][link-vindi].
 
 # Requisitos
-- PHP >=5.5.19
-- Certificado Digital.
+- PHP >=5.5.19;
+- Certificado digital HTTPS assinado por uma entidade certificadora;
 - Conta ativa na [Vindi](https://www.vindi.com.br "Vindi").
 
 # Instalação
@@ -70,7 +70,7 @@ Para mais detalhes sobre quais serviços existem, quais campos enviar e demais i
 [verifique nossa página interativa de uso da API][link-swagger].
 
 **Response:**
-Caso precise de mais detalhes sobre a resposta de cada request, utilize o método `getLastResponse`. Se nenhum request foi efetuado anteriormente este método retornará `NULL`.
+Caso precise de mais detalhes sobre a resposta de cada request, utilize o método `getLastResponse`. Se nenhum request foi efetuado anteriormente, este método retornará `NULL`.
 
 ```php
 // Retorna os dados da última resposta recebida dos servidores da Vindi
@@ -129,18 +129,17 @@ switch ($event->type) {
 ```
 
 ## Dúvidas
-Caso necessite de informações sobre a plataforma ou API por favor siga através do canal [Atendimento Vindi](http://atendimento.vindi.com.br/hc/pt-br)[Atendimento Vindi](http://atendimento.vindi.com.br/hc/pt-br)
+Caso necessite de informações sobre a plataforma ou API, por favor acesse o [Atendimento Vindi](http://atendimento.vindi.com.br/hc/pt-br).
 
 ## Contribuindo
 Por favor, leia o arquivo [CONTRIBUTING.md](CONTRIBUTING.md).
-Caso tenha alguma sugestão ou bug para reportar por favor nos comunique através das [issues](./issues).
+Caso tenha alguma sugestão ou bug para reportar, por favor nos comunique através das [issues](./issues).
 
 ## Segurança
-Se você descobrir qualquer questão relacionada a segurança, por favor,
-envie um e-mail para contato@vindi.com.br ao invés de utilizar os issues.
+Se você descobrir qualquer questão relacionada a segurança, por favor, envie um e-mail para seguranca@vindi.com.br ao invés de utilizar os issues.
 
 ## Changelog
-Todas as informações sobre cada release pode ser  [CHANGELOG.md](CHANGELOG.md).
+Todas as informações sobre cada release pode ser consultadas em [CHANGELOG.md](CHANGELOG.md).
 
 ## Créditos
 - [Vindi][link-author]
