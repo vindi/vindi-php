@@ -139,7 +139,7 @@ Caso tenha alguma sugestão ou bug para reportar, por favor nos comunique atrav�
 Se você descobrir qualquer questão relacionada a segurança, por favor, envie um e-mail para seguranca@vindi.com.br ao invés de utilizar os issues.
 
 ## Changelog
-Todas as informações sobre cada release pode ser consultadas em [CHANGELOG.md](CHANGELOG.md).
+Todas as informações sobre cada release podem ser consultadas em [CHANGELOG.md](CHANGELOG.md).
 
 ## Créditos
 - [Vindi][link-author]
