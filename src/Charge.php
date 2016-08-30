@@ -39,4 +39,17 @@ class Charge extends Resource
     {
         return $this->post($id, 'charge', $form_params);
     }
+
+    /**
+     * Make a POST request to charges/{id}/refund.
+     *
+     * @param int   $id The resource's id.
+     * @param array $form_params
+     *
+     * @return mixed
+     */
+    public function refund($id)
+    {
+        return $this->post($id, 'refund');
+    }
 }
