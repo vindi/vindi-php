@@ -5,7 +5,7 @@ namespace Vindi\Test;
 use Vindi\Message;
 use Vindi\ApiRequester;
 
-class ImportBatchTest extends ResourceTest
+class MessageTest extends ResourceTest
 {
     public function setUp()
     {
