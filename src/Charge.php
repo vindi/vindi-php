@@ -44,7 +44,6 @@ class Charge extends Resource
      * Make a POST request to charges/{id}/refund.
      *
      * @param int   $id The resource's id.
-     * @param array $form_params
      *
      * @return mixed
      */
