@@ -2,6 +2,9 @@
 
 Todas as mudanças notáveis serão documentadas neste arquivo.
 
+## 1.0.10 - 30/08/2016
+- Add endopoints issues, messages and import_baches
+
 ## 1.0.9 - 19/08/2016
 - Add method verify in PaymentProfiles
 
