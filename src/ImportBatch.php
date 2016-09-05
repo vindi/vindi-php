@@ -4,12 +4,23 @@ namespace Vindi;
 
 class ImportBatch extends Resource
 {
+    /**
+     * The endpoint that will hit the API.
+     *
+     * @return string
+     */
     public function endPoint()
     {
         return 'import_batches';
     }
 
-    public function import($filePath, $options)
+    /**
+     * @param string $filePath
+     * @param array $options
+     *
+     * @return mixed
+     */
+    public function import($filePath, array $options)
     {
         $file = new \SplFileObject($filePath);
         $requestParams = $this->buildRequestParams($file, $options);
@@ -17,6 +28,12 @@ class ImportBatch extends Resource
         return $this->apiRequester->request('POST', $this->url(), $requestParams);
     }
 
+    /**
+     * @param \SplFileObject $file
+     * @param array $options
+     *
+     * @return array
+     */
     private function buildRequestParams(\SplFileObject $file, array $options)
     {
         $multipart = [
