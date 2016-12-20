@@ -76,6 +76,8 @@ Caso precise de mais detalhes sobre a resposta de cada request, utilize o métod
 // Retorna os dados da última resposta recebida dos servidores da Vindi
 $lastResponse = $customerService->getLastResponse();
 
+// Retorna o corpo da requisição
+$body = (string) $customerService->getLastResponse()->getBody();
 // Retorna o HTTP Status Code
 $lastResponse->getStatusCode();
 // Retorna o todos os headers
