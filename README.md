@@ -85,7 +85,8 @@ $lastResponse->getHeaders();
 $lastResponse->getHeader('Header-Name');
 ```
 
-** Exceptions e Erros de validaço **
+### Exceptions e Erros de Validação
+
 Caso deseje visualizar mais detalhes dos erros de validação ou exceptions, adicione a variável VINDI_EXCEPTION_DETAILS no arquivo .env:
 ```
 VINDI_EXCEPTION_DETAILS=true
