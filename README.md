@@ -25,6 +25,7 @@ Via Composer
 composer require vindi/vindi-php
 ```
 
+
 ### Teste
 
 ``` bash
@@ -84,6 +85,11 @@ $lastResponse->getHeaders();
 $lastResponse->getHeader('Header-Name');
 ```
 
+** Exceptions e Erros de validaço **
+Caso deseje visualizar mais detalhes dos erros de validação ou exceptions, adicione a variável VINDI_EXCEPTION_DETAILS no arquivo .env:
+```
+VINDI_EXCEPTION_DETAILS=true
+```
 ### Webhooks
 
 Este pacote torna possível a interpretação dos [webhooks enviados pela Vindi][link-webhooks].
