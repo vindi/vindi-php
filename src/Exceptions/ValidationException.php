@@ -11,7 +11,11 @@ class ValidationException extends RequestException
     public function __construct($status, $errors, array $lastOptions = [])
     {
         parent::__construct($status, $errors, $lastOptions);
+        
+        if(env('VINDI_EXCEPTION_DETAILS')){
+            $msg = $msg . json_encode($errors);
+        }
 
-        $this->message     = "Erros de validação foram encontrados!";
+        $this->message = $msg;
     }
 }
