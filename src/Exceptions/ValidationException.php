@@ -13,7 +13,7 @@ class ValidationException extends RequestException
     {
         parent::__construct($status, $errors, $lastOptions);
 
-        $this->message = env('VINDI_EXCEPTION_AS_JSON', false) ? $this->handleJson($errors) : $this->handleString($errors);
+        $this->message = getenv('VINDI_EXCEPTION_AS_JSON') === 'true' ? $this->handleJson($errors) : $this->handleString($errors);
     }
 
     /**
