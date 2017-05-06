@@ -86,9 +86,9 @@ $lastResponse->getHeader('Header-Name');
 
 ### Exceptions e Erros de Validação
 
-Para que o retorno das Exceptions de validação sejam retornadas em formato json, adicione a variável VINDI_EXCEPTION_AS_JSON no seu .env:
+Para que o retorno das Exceptions de validação sejam retornadas em formato json, adicione a variável de ambiente VINDI_EXCEPTION_AS_JSON
 ```
-VINDI_EXCEPTION_AS_JSON=true
+putenv('VINDI_EXCEPTION_AS_JSON=true');
 ```
 Valor default: false
 
