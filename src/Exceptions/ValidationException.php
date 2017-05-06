@@ -32,7 +32,7 @@ class ValidationException extends RequestException
         foreach ($errors as $error)
             $error_log[$error->parameter] = $error->message;
 
-        return json_encode($errors);
+        return json_encode($error_log);
     }
 
     /**
