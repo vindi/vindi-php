@@ -18,4 +18,16 @@ class InvoiceTest extends ResourceTest
     {
         $this->assertSame($this->resource->endpoint(), 'invoices');
     }
+
+    /** @test */
+    public function it_should_retry_a_invoice()
+    {
+        $stdClass = new stdClass;
+
+        $this->resource->apiRequester->method('request')->willReturn($stdClass);
+
+        $response = $this->resource->retry(1);
+
+        $this->assertSame($response, $stdClass);
+    }
 }

@@ -2,56 +2,56 @@
 
 namespace Vindi\Test;
 
-use stdClass;
 use Vindi\ApiRequester;
-use Vindi\Bill;
+use Vindi\Notification;
+use stdClass;
 
-class BillTest extends ResourceTest
+class NotificationTest extends ResourceTest
 {
     public function setUp()
     {
-        $this->resource = $this->getMockForAbstractClass(Bill::class);
+        $this->resource = $this->getMockForAbstractClass(Notification::class);
         $this->resource->apiRequester = $this->getMock(ApiRequester::class);
     }
 
     /** @test */
     public function it_should_have_an_endpoint()
     {
-        $this->assertSame($this->resource->endpoint(), 'bills');
+        $this->assertSame($this->resource->endpoint(), 'notification');
     }
 
     /** @test */
-    public function it_should_approve_a_bill()
+    public function it_should_get_notification_item_a_notification()
     {
         $stdClass = new stdClass;
 
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
 
-        $response = $this->resource->approve(1);
+        $response = $this->resource->getNotificationItem(1);
 
         $this->assertSame($response, $stdClass);
     }
 
     /** @test */
-    public function it_should_charge_a_bill()
+    public function it_should_set_notification_item_a_notification()
     {
         $stdClass = new stdClass;
 
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
 
-        $response = $this->resource->charge(1);
+        $response = $this->resource->setNotificationItem(1);
 
         $this->assertSame($response, $stdClass);
     }
 
     /** @test */
-    public function it_should_invoice_a_bill()
+    public function it_should_remove_notification_item_a_notification()
     {
         $stdClass = new stdClass;
 
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
 
-        $response = $this->resource->invoice(1);
+        $response = $this->resource->removeNotificationItem(1);
 
         $this->assertSame($response, $stdClass);
     }
