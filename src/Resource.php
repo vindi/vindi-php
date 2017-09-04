@@ -136,6 +136,18 @@ abstract class Resource
     }
 
     /**
+     * Make a GET request to an additional endpoint for a specific resource.
+     *
+     * @param string $additionalEndpoint Additional endpoint that will be appended to the URL.
+     *
+     * @return mixed
+     */
+    public function current($id = null, $additionalEndpoint = null)
+    {
+        return $this->apiRequester->request('GET', $this->url($id, $additionalEndpoint));
+    }
+
+    /**
      * Return the last response from a preview request
      *
      * @return mixed

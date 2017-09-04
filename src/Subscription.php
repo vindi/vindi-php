@@ -15,15 +15,15 @@ class Subscription extends Resource
     }
 
     /**
-     * Make a GET request to subscriptions/{id}/periods.
+     * Make a POST request to subscriptions/{id}/renew.
      *
      * @param int $id The resource's id.
      *
      * @return mixed
      */
-    public function periods($id)
+    public function renew($id)
     {
-        return $this->get($id, 'periods');
+        return $this->post($id, 'renew');
     }
 
     /**

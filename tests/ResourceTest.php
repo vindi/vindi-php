@@ -114,6 +114,18 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function it_should_use_a_get_to_current_resource()
+    {
+        $stdClass = new stdClass;
+
+        $this->resource->apiRequester->method('request')->willReturn($stdClass);
+
+        $response = $this->resource->current(1, 'test');
+
+        $this->assertSame($response, $stdClass);
+    }
+
+    /** @test */
     public function it_should_return_null_when_no_request_was_sent()
     {
         $lastResponse = $this->resource->getLastResponse();

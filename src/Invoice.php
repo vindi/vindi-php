@@ -13,4 +13,15 @@ class Invoice extends Resource
     {
         return 'invoices';
     }
+
+    /**
+     * Make a POST request to invoices/{id}/retry.
+     * @param int $id The resource's id.
+     *
+     * @return mixed
+     */
+    public function retry($id)
+    {
+        return $this->post($id, 'retry');
+    }
 }
