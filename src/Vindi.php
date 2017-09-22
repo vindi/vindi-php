@@ -57,7 +57,7 @@ class Vindi
      */
     public function getBaseUri()
     {
-        return $this->getApiKey() === 'sandbox'
+        return $this->getStage() === 'sandbox'
             ? static::$sandboxApiBase
             : static::$apiBase;
     }
