@@ -39,6 +39,9 @@ require __DIR__.'/vendor/autoload.php';
 // Coloca a chave da Vindi (VINDI_API_KEY) no environment do PHP.
 putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');
 
+// Habilita  a sandbox (VINDI_ENV). Qualquer valor diferente de "sandbox" utiliza produção.
+putenv('VINDI_ENV=sandbox');
+
 // Instancia o serviço de Customers (Clientes)
 $customerService = new Vindi\Customer;
 
