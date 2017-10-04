@@ -35,6 +35,19 @@ class VindiTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function it_should_get_stage_from_environment()
+    {
+        putenv(Vindi::$stageEnvVar);
+        $stage = $this->vindi->getStage();
+        $this->assertFalse($stage);
+
+        $random = rand();
+        putenv(Vindi::$stageEnvVar . '=' . $random);
+        $stage = $this->vindi->getStage();
+        $this->assertEquals($stage, $random);
+    }
+
+    /** @test */
     public function cert_file_should_exists()
     {
         $this->assertFileExists($this->vindi->getCertPath());
