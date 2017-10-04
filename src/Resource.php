@@ -140,7 +140,8 @@ abstract class Resource
      *
      * @return mixed
      */
-    public function getLastResponse(){
-       return $this->apiRequester->lastResponse;
+    public function getLastResponse()
+    {
+        return $this->apiRequester->lastResponse;
     }
 }

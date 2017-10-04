@@ -22,12 +22,16 @@ Nós aceitamos contribuições por Pull Requests em [Github](https://github.com/
 - **Envie uma história coerente** - Certifique-se de que cada commit individual em seu pull request é significativo.
 Se você tem que fazer vários commit intermediários enquanto desenvolve, por favor faça [squash](http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) dos mesmos antes de enviar.
 
-
 ## Rodando os Testes
 
 ``` bash
 composer test
 ```
 
+## Verificando o estilo do código
+
+``` bash
+composer code-style
+```
 
 **Feliz desenvolvimento!**

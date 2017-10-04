@@ -27,6 +27,7 @@ install:
 
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
+  - composer code-style
 
 after_script:
  - wget https://scrutinizer-ci.com/ocular.phar

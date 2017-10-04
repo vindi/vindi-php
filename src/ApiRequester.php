@@ -82,8 +82,9 @@ class ApiRequester
      */
     private function checkRateLimit(ResponseInterface $response)
     {
-        if (429 === $response->getStatusCode())
+        if (429 === $response->getStatusCode()) {
             throw new RateLimitException($response);
+        }
 
         return $this;
     }
