@@ -65,6 +65,7 @@ foreach ($customers as $customer) {
     echo "O cliente '{$customer->name}' foi atualizado!<br />";
 }
 ```
+Para mais exemplos consulte o nosso artigo de [utilização da SDK-PHP][link-artigo-utilizacao-sdk].
 
 Para mais detalhes sobre quais serviços existem, quais campos enviar e demais informações,
 [verifique nossa página interativa de uso da API][link-swagger].
@@ -130,6 +131,13 @@ switch ($event->type) {
 }
 ```
 
+### Ambiente Sandbox
+Para usar o ambiente Sandbox da Vindi recomendamos a utilização do operador de resolução de escopo:
+
+```php
+Vindi\Vindi::$apiBase = 'https://sandbox-app.vindi.com.br/api/v1/';
+```
+
 ## Dúvidas
 Caso necessite de informações sobre a plataforma ou API, por favor acesse o [Atendimento Vindi](http://atendimento.vindi.com.br/hc/pt-br).
 
@@ -168,3 +176,4 @@ GNU GPLv3. Por favor, veja o [Arquivo de Licença](license.txt) para mais inform
 [link-introducao-api]: http://atendimento.vindi.com.br/hc/pt-br/articles/203020644-Introdu%C3%A7%C3%A3o-%C3%A0-API-de-Recorr%C3%AAncia
 [link-webhooks]: http://atendimento.vindi.com.br/hc/pt-br/articles/203305800-Webhooks
 [link-swagger]: http://vindi.github.io/api-docs/dist/
+[link-artigo-utilizacao-sdk]: https://atendimento.vindi.com.br/hc/pt-br/articles/115010567727-Utiliza%C3%A7%C3%A3o-da-SDK-PHP
