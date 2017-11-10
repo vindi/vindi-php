@@ -21,7 +21,7 @@ class Vindi
      * @var string
      */
     public static $apiKeyEnvVar = 'VINDI_API_KEY';
-    public static $apiKeyEnvVar = 'VINDI_API_BASE';
+    public static $baseApiEnvVar = 'VINDI_API_BASE';
 
     /**
      * Get Vindi API Key from environment.
