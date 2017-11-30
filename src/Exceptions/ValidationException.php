@@ -14,6 +14,7 @@ class ValidationException extends RequestException
             var_dump($errors);
             exit;
         }
+        
         parent::__construct($status, $errors, $lastOptions);
         $message = "Erros de validação foram encontrados!";
         $firstError = reset($errors);
