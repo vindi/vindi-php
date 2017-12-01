@@ -15,7 +15,7 @@ class Client extends Guzzle
         $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 
         $config = array_merge([
-            'base_uri'        => Vindi::$apiBase,
+            'base_uri'        => Vindi::getApiBase(),
             'auth'            => [$vindi->getApiKey(), '', 'BASIC'],
             'headers' => [
                 'Content-Type' => 'application/json',
