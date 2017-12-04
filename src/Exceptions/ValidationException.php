@@ -1,4 +1,6 @@
-<?php namespace Vindi\Exceptions;
+<?php
+
+namespace Vindi\Exceptions;
 
 class ValidationException extends RequestException
 {
@@ -24,6 +26,6 @@ class ValidationException extends RequestException
             }
         }
 
-        $this->message = $message.' - '.print_r($errors, true);
+        $this->message = $message;
     }
 }

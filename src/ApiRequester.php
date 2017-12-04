@@ -50,6 +50,8 @@ class ApiRequester
             $response = $e->getResponse();
         }
 
+        \Yii::$app->logHandler(print_r(json_decode($response->getBody()->getContents(),true),true), 'APIRequest');
+
         return $this->response($response);
     }
 
