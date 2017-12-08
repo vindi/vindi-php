@@ -50,9 +50,11 @@ class ApiRequester
             $response = $e->getResponse();
         }
 
-        \Yii::$app->logHandler->run('VindiAPI',print_r(json_decode($response->getBody()->getContents(),true),true), 'APIRequest');
+        $responseAfter  = $this->response($response);
 
-        return $this->response($response);
+        \Yii::$app->logHandler->run('VindiAPI', print_r($responseAfter,true), 'APIRequest');
+
+        return $responseAfter;
     }
 
     /**
