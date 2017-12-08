@@ -50,7 +50,11 @@ class ApiRequester
             $response = $e->getResponse();
         }
 
-        return $this->response($response);
+        $responseAfter  = $this->response($response);
+
+        \Yii::$app->logHandler->run('VindiAPI', print_r($responseAfter,true), 'APIRequest');
+
+        return $responseAfter;
     }
 
     /**
@@ -61,15 +65,16 @@ class ApiRequester
     public function response(ResponseInterface $response)
     {
         $this->lastResponse = $response;
-
+        $data = null;
         $content = $response->getBody()->getContents();
 
         $decoded = json_decode($content); // parse as object
-        reset($decoded);
-        $data = current($decoded); // get first attribute from array, e.g.: subscription, subscriptions, errors.
+        if (!empty($decoded)) {
+            reset($decoded);
+            $data = current($decoded); // get first attribute from array, e.g.: subscription, subscriptions, errors.
+        }
 
-        $this->checkRateLimit($response)
-            ->checkForErrors($response, $data);
+        $this->checkRateLimit($response)->checkForErrors($response, $data);
 
         return $data;
     }
