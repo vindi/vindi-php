@@ -46,11 +46,15 @@ class RequestException extends Exception
         $this->messages   = [];
 
         foreach ($errors as $error) {
-            $this->ids[] = $error->id;
+            if (isset($error->id)) {
+                $this->ids[] = $error->id;
+            }
             if (isset($error->parameter)) {
                 $this->parameters[] = $error->parameter;
             }
-            $this->messages[] = $error->message;
+            if (isset($error->message)) {
+                $this->messages[] = $error->message;
+            }
         }
 
         $this->message = trim(join('. ', $this->messages));
