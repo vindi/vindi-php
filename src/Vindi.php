@@ -79,4 +79,3 @@ class Vindi
         return realpath(sprintf('%s/%s', dirname(__FILE__), '/../data/ssl/ca-bundle.crt'));
     }
 }
-
