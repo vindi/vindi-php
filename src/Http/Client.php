@@ -1,4 +1,6 @@
-<?php namespace Vindi\Http;
+<?php
+
+namespace Vindi\Http;
 
 use GuzzleHttp\Client as Guzzle;
 use Vindi\Vindi;
@@ -30,4 +32,3 @@ class Client extends Guzzle
         parent::__construct($config);
     }
 }
-
