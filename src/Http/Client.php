@@ -11,11 +11,10 @@ class Client extends Guzzle
     public function __construct(array $config = [])
     {
         $vindi = new Vindi;
-
-        $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+        $host  = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 
         $config = array_merge([
-            'base_uri'        => Vindi::$apiBase,
+            'base_uri'        => $vindi->getApiBase(),
             'auth'            => [$vindi->getApiKey(), '', 'BASIC'],
             'headers' => [
                 'Content-Type' => 'application/json',
