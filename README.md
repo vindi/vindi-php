@@ -130,6 +130,14 @@ switch ($event->type) {
 }
 ```
 
+### Configurar SANDBOX
+
+Caso você precise utilizar o sistema em ambiente sandbox, basta apenas inserir essa variável de ambiente setando para nossos servidores:
+```
+putenv('VINDI_API_KEY=https://sandbox-app.vindi.com.br/api/v1/');
+```
+
+
 ## Dúvidas
 Caso necessite de informações sobre a plataforma ou API, por favor acesse o [Atendimento Vindi](http://atendimento.vindi.com.br/hc/pt-br).
 
