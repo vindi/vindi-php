@@ -2,30 +2,34 @@
 
 Todas as mudanças notáveis serão documentadas neste arquivo.
 
+## 1.0.11 - 14/03/2018
+- VINDI_API_URI environment variable support.
+- Add invoice retry endpoint.
+
 ## 1.0.10 - 30/08/2016
-- Add endopoints issues, messages and import_baches
+- Add issues, messages and import_batches endpoints.
 
 ## 1.0.9 - 19/08/2016
-- Add method verify in PaymentProfiles
+- Add method verify in PaymentProfiles.
 
 ## 1.0.8 - 04/02/2016
-- Add params to Delete method
+- Add params to Delete method.
 
 ## 1.0.7 - 29/01/2016
-- Fix Content-Type and User-Agent headers
+- Fix Content-Type and User-Agent headers.
 
 ## 1.0.6 - 29/11/2015
-- Add method getLastResponse in Resource to access informations about last response
+- Add method getLastResponse in Resource to access informations about last response.
 
 ## 1.0.5 - 21/10/2015
-- Add a method to get request body in RequestException
-- Fix throw RateLimitException based on HTTP status code 429
+- Add a method to get request body in RequestException.
+- Fix throw RateLimitException based on HTTP status code 429.
 
 ## 1.0.4 - 08/10/2015
-- Add CA Bundle
+- Add CA Bundle.
 
 ## 1.0.3 - 02/10/2015
-- Change x-www-form-urlencoded to json
+- Change x-www-form-urlencoded to json.
 
 ## 1.0.2 - 05/08/2015
 - Improved code style and type-hinting.
