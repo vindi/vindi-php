@@ -58,6 +58,4 @@ class Bill extends Resource
     {
         return $this->post($id, 'invoice');
     }
-
-
 }

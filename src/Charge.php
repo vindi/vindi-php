@@ -17,10 +17,13 @@ class Charge extends Resource
     /**
      * Make a POST request to charges/{id}/reissue.
      *
-     * @param int   $id The resource's id.
+     * @param int $id The resource's id.
      * @param array $form_params
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function reissue($id, array $form_params = [])
     {
@@ -30,10 +33,13 @@ class Charge extends Resource
     /**
      * Make a POST request to charges/{id}/charge.
      *
-     * @param int   $id The resource's id.
+     * @param int $id The resource's id.
      * @param array $form_params
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function charge($id, array $form_params = [])
     {
@@ -43,9 +49,12 @@ class Charge extends Resource
     /**
      * Make a POST request to charges/{id}/refund.
      *
-     * @param int   $id The resource's id.
+     * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function refund($id)
     {
@@ -55,9 +64,12 @@ class Charge extends Resource
     /**
      * Make a POST request to charges/{id}/fraud_review.
      *
-     * @param int   $id The resource's id.
+     * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function fraud_review($id)
     {
