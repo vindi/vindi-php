@@ -24,11 +24,8 @@ class PaymentProfileTest extends ResourceTest
     public function it_should_verify_a_payment_profile()
     {
         $stdClass = new stdClass;
-
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
-
         $response = $this->resource->verify(1);
-
         $this->assertSame($response, $stdClass);
     }
 }

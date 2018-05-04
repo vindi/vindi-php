@@ -24,21 +24,26 @@ class SubscriptionTest extends ResourceTest
     public function it_should_get_the_periods_of_a_subscription()
     {
         $this->resource->apiRequester->method('request')->willReturn([]);
-
         $response = $this->resource->periods(1);
-
         $this->assertSame($response, []);
+    }
+
+    /** @test */
+    public function it_should_renew_a_subscription()
+    {
+        $stdClass = new stdClass;
+        $this->resource->apiRequester->method('request')->willReturn($stdClass);
+        $response = $this->resource->renew(1);
+        $this->assertSame($response, $stdClass);
     }
 
     /** @test */
     public function it_should_reactivate_a_subscription()
     {
         $stdClass = new stdClass;
-
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
-
         $response = $this->resource->reactivate(1);
-
         $this->assertSame($response, $stdClass);
     }
+
 }

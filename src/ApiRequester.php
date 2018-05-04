@@ -35,11 +35,14 @@ class ApiRequester
     }
 
     /**
-     * @param string $method   HTTP Method.
+     * @param string $method HTTP Method.
      * @param string $endpoint Relative to API base path.
-     * @param array  $options  Options for the request.
+     * @param array $options Options for the request.
      *
      * @return mixed
+     * @throws RateLimitException
+     * @throws RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function request($method, $endpoint, array $options = [])
     {
@@ -57,6 +60,8 @@ class ApiRequester
      * @param \Psr\Http\Message\ResponseInterface $response
      *
      * @return object
+     * @throws RateLimitException
+     * @throws RequestException
      */
     public function response(ResponseInterface $response)
     {

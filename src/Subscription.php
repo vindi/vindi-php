@@ -27,6 +27,18 @@ class Subscription extends Resource
     }
 
     /**
+     * Make a POST request to subscriptions/{id}/renew.
+     *
+     * @param int $id The resource's id.
+     *
+     * @return mixed
+     */
+    public function renew($id)
+    {
+        return $this->post($id, 'renew');
+    }
+
+    /**
      * Make a POST request to subscriptions/{id}/reactivate.
      *
      * @param int $id The resource's id.
@@ -37,4 +49,5 @@ class Subscription extends Resource
     {
         return $this->post($id, 'reactivate');
     }
+
 }
