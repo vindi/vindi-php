@@ -46,13 +46,4 @@ class ChargeTest extends ResourceTest
         $response = $this->resource->refund(1, []);
         $this->assertSame($response, $stdClass);
     }
-
-    /** @test */
-    public function it_should_fraud_review_a_charge()
-    {
-        $stdClass = new stdClass;
-        $this->resource->apiRequester->method('request')->willReturn($stdClass);
-        $response = $this->resource->fraud_review(1, []);
-        $this->assertSame($response, $stdClass);
-    }
 }
