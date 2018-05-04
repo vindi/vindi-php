@@ -18,4 +18,13 @@ class CustomerTest extends ResourceTest
     {
         $this->assertSame($this->resource->endpoint(), 'customers');
     }
+
+    /** @test */
+    public function it_should_unarchive_customer()
+    {
+        $stdClass = new \stdClass();
+        $this->resource->apiRequester->method('request')->willReturn($stdClass);
+        $response = $this->resource->unarchive(1);
+        $this->assertSame($response, $stdClass);
+    }
 }

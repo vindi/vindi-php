@@ -24,11 +24,8 @@ class PeriodTest extends ResourceTest
     public function it_should_bill_a_period()
     {
         $stdClass = new stdClass;
-
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
-
         $response = $this->resource->bill(1);
-
         $this->assertSame($response, $stdClass);
     }
 }

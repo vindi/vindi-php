@@ -11,9 +11,19 @@ abstract class Resource
 
     /**
      * Resource constructor.
+     *
+     * @param array $arguments
      */
-    public function __construct()
+    public function __construct($arguments = [])
     {
+        if (key_exists('VINDI_API_KEY', $arguments)) {
+            Vindi::setApiKey($arguments['VINDI_API_KEY']);
+        }
+
+        if (key_exists('VINDI_API_URI', $arguments)) {
+            Vindi::setApiUri($arguments['VINDI_API_URI']);
+        }
+
         $this->apiRequester = new ApiRequester;
     }
 
@@ -27,7 +37,7 @@ abstract class Resource
     /**
      * Build url that will hit the API.
      *
-     * @param int    $id                 The resource's id.
+     * @param int $id The resource's id.
      * @param string $additionalEndpoint Additional endpoint that will be appended to the URL.
      *
      * @return string
@@ -36,10 +46,10 @@ abstract class Resource
     {
         $endpoint = $this->endpoint();
 
-        if (! is_null($id)) {
+        if (!is_null($id)) {
             $endpoint .= '/' . $id;
         }
-        if (! is_null($additionalEndpoint)) {
+        if (!is_null($additionalEndpoint)) {
             $endpoint .= '/' . $additionalEndpoint;
         }
 
@@ -52,6 +62,9 @@ abstract class Resource
      * @param array $params Pagination and Filter parameters.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function all(array $params = [])
     {
@@ -64,6 +77,9 @@ abstract class Resource
      * @param array $form_params The request body.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function create(array $form_params = [])
     {
@@ -76,6 +92,9 @@ abstract class Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function retrieve($id = null)
     {
@@ -85,10 +104,13 @@ abstract class Resource
     /**
      * Update a specific resource.
      *
-     * @param int   $id          The resource's id.
+     * @param int $id The resource's id.
      * @param array $form_params The request body.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function update($id = null, array $form_params = [])
     {
@@ -102,6 +124,9 @@ abstract class Resource
      * @param array $form_params The request body.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function delete($id = null, array $form_params = [])
     {
@@ -111,10 +136,13 @@ abstract class Resource
     /**
      * Make a GET request to an additional endpoint for a specific resource.
      *
-     * @param int    $id                 The resource's id.
+     * @param int $id The resource's id.
      * @param string $additionalEndpoint Additional endpoint that will be appended to the URL.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function get($id = null, $additionalEndpoint = null)
     {
@@ -124,11 +152,14 @@ abstract class Resource
     /**
      * Make a POST request to an additional endpoint for a specific resource.
      *
-     * @param int    $id                 The resource's id.
+     * @param int $id The resource's id.
      * @param string $additionalEndpoint Additional endpoint that will be appended to the URL.
-     * @param array  $form_params        The request body.
+     * @param array $form_params The request body.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function post($id = null, $additionalEndpoint = null, array $form_params = [])
     {

@@ -19,6 +19,9 @@ class ImportBatch extends Resource
      * @param array $options
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function import($filePath, array $options)
     {
