@@ -20,10 +20,28 @@ class Subscription extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function periods($id)
     {
         return $this->get($id, 'periods');
+    }
+
+    /**
+     * Make a POST request to subscriptions/{id}/renew.
+     *
+     * @param int $id The resource's id.
+     *
+     * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function renew($id)
+    {
+        return $this->post($id, 'renew');
     }
 
     /**
@@ -32,6 +50,9 @@ class Subscription extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws Exceptions\RateLimitException
+     * @throws Exceptions\RequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function reactivate($id)
     {

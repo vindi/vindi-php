@@ -24,11 +24,28 @@ class BillTest extends ResourceTest
     public function it_should_approve_a_bill()
     {
         $stdClass = new stdClass;
-
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
-
         $response = $this->resource->approve(1);
-
         $this->assertSame($response, $stdClass);
     }
+
+     /** @test */
+    public function it_should_charge_a_bill()
+    {
+        $stdClass = new stdClass;
+        $this->resource->apiRequester->method('request')->willReturn($stdClass);
+        $response = $this->resource->charge(1);
+        $this->assertSame($response, $stdClass);
+    }
+
+     /** @test */
+    public function it_should_invoice_a_bill()
+    {
+        $stdClass = new stdClass;
+        $this->resource->apiRequester->method('request')->willReturn($stdClass);
+        $response = $this->resource->invoice(1);
+        $this->assertSame($response, $stdClass);
+    }
+
+
 }

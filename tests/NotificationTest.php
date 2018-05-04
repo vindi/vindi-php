@@ -2,21 +2,21 @@
 
 namespace Vindi\Test;
 
-use Vindi\ImportBatch;
 use Vindi\ApiRequester;
+use Vindi\Notification;
 
-class ImportBatchTest extends ResourceTest
+class NotificationTest extends ResourceTest
 {
     public function setUp()
     {
-        $this->resource = $this->getMockForAbstractClass(ImportBatch::class);
+        $this->resource = $this->getMockForAbstractClass(Notification::class);
         $this->resource->apiRequester = $this->getMock(ApiRequester::class);
     }
 
     /** @test */
     public function it_should_have_an_endpoint()
     {
-        $this->assertSame($this->resource->endpoint(), 'import_batches');
+        $this->assertSame($this->resource->endpoint(), 'notifications');
     }
 
 }

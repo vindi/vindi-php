@@ -24,11 +24,8 @@ class ChargeTest extends ResourceTest
     public function it_should_reissue_a_charge()
     {
         $stdClass = new stdClass;
-
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
-
         $response = $this->resource->reissue(1, []);
-
         $this->assertSame($response, $stdClass);
     }
 
@@ -36,11 +33,17 @@ class ChargeTest extends ResourceTest
     public function it_should_charge_a_charge()
     {
         $stdClass = new stdClass;
-
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
-
         $response = $this->resource->charge(1, []);
+        $this->assertSame($response, $stdClass);
+    }
 
+    /** @test */
+    public function it_should_refund_a_charge()
+    {
+        $stdClass = new stdClass;
+        $this->resource->apiRequester->method('request')->willReturn($stdClass);
+        $response = $this->resource->refund(1, []);
         $this->assertSame($response, $stdClass);
     }
 }

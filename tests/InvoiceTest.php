@@ -24,11 +24,8 @@ class InvoiceTest extends ResourceTest
     public function it_should_retry_an_invoice()
     {
         $stdClass = new stdClass;
-
         $this->resource->apiRequester->method('request')->willReturn($stdClass);
-
         $response = $this->resource->retry(1);
-
         $this->assertSame($response, $stdClass);
     }
 }

@@ -5,6 +5,11 @@ namespace Vindi;
 class Vindi
 {
 
+    private static $vindi_api_key;
+
+    private static $vindi_api_uri;
+
+
     /**
      * This Package SDK Version.
      *
@@ -33,6 +38,39 @@ class Vindi
      */
     public static $apiTimeOutEnvVar = 'VINDI_API_TIME_OUT';
 
+
+    /**
+     * Vindi constructor.
+     */
+    private function __construct()
+    {
+    }
+
+
+    /**
+     * Set API KEY
+     *
+     * @param $vindi_api_key
+     */
+    public static function setApiKey($vindi_api_key)
+    {
+        if (null === self::$vindi_api_key) {
+            self::$vindi_api_key = $vindi_api_key;
+        }
+    }
+
+    /**
+     * Set API URI
+     *
+     * @param $vindi_api_uri
+     */
+    public static function setApiUri($vindi_api_uri)
+    {
+        if (null === self::$vindi_api_uri) {
+            self::$vindi_api_uri = $vindi_api_uri;
+        }
+    }
+
     /**
      * Get Vindi API URI from environment.
      *
@@ -40,10 +78,15 @@ class Vindi
      */
     public static function getApiUri()
     {
-        if (empty(getenv(static::$apiUriEnvVar))) {
-            return 'https://app.vindi.com.br/api/v1/';
+        if (!empty(getenv(static::$apiUriEnvVar))) {
+            return getenv(static::$apiUriEnvVar);
         }
-        return getenv(static::$apiUriEnvVar);
+
+        if (null !== self::$vindi_api_uri) {
+            return self::$vindi_api_uri;
+        }
+
+        return 'https://app.vindi.com.br/api/v1/';
     }
 
     /**
@@ -53,6 +96,10 @@ class Vindi
      */
     public static function getApiKey()
     {
+        if (null !== self::$vindi_api_key) {
+            return self::$vindi_api_key;
+        }
+
         return getenv(static::$apiKeyEnvVar);
     }
 
@@ -63,10 +110,10 @@ class Vindi
      */
     public static function getApiTimeOut()
     {
-        if (empty(getenv(static::$apiTimeOutEnvVar))) {
-            return 60;
+        if (!empty(getenv(static::$apiTimeOutEnvVar))) {
+            return getenv(static::$apiTimeOutEnvVar);
         }
-        return getenv(static::$apiTimeOutEnvVar);
+        return 60;
     }
 
     /**
