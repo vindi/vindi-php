@@ -13,5 +13,4 @@ class Notification extends Resource
     {
         return 'notifications';
     }
-
 }
