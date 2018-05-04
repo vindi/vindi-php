@@ -2,7 +2,11 @@
 
 Todas as mudanças notáveis serão documentadas neste arquivo.
 
-## 1.0.11 - 14/03/2018
+## 1.1.0 - 04/05/2018
+- Add new endpoints to cover the methods of the API.
+- Option to input VINDI_API_URI and VINDI_API_KEY passing as arguments on the instances.
+
+# 1.0.11 - 14/03/2018
 - VINDI_API_URI environment variable support.
 - Add invoice retry endpoint.
 
