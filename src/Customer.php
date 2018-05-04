@@ -13,4 +13,16 @@ class Customer extends Resource
     {
         return 'customers';
     }
+
+    /**
+     * Make a POST request to customers/{id}/unarchive.
+     *
+     * @param int $id The resource's id.
+     *
+     * @return mixed
+     */
+    public function unarchive($id)
+    {
+        return $this->post($id, 'unarchive');
+    }
 }
