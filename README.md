@@ -74,16 +74,14 @@ foreach ($customers as $customer) {
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-// Instancia o serviço de Customers (Clientes)
+// Declara em um array os valores de VINDI_API_KEY e VINDI_API_URI
 $arguments = array(
     \Vindi\Vindi::VINDI_API_KEY => 'SUA_CHAVE_DA_API',
     \Vindi\Vindi::VINDI_API_URI => 'https://sandbox-app.vindi.com.br/api/v1/'
 );
 
+// Instancia o serviço de Customers (Clientes) com o array contendo VINDI_API_KEY e VINDI_API_URI
 $customerService = new Vindi\Customer($arguments);
-
-// Essa instância não requer argumentos
-$planService = new Vindi\Plan;
 
 // Cria um novo cliente:
 $customer = $customerService->create([
@@ -107,6 +105,20 @@ foreach ($customers as $customer) {
 
     echo "O cliente '{$customer->name}' foi atualizado!<br />";
 }
+
+// Instancia o serviço de Products que não requer argumentos, pois já foi configurado em Customer
+$productService = new Vindi\Product;
+
+// Cria um novo produto:
+$product = $productService->create([
+    'name' => 'Teste de Produto',
+    'pricing_schema' => [
+        'price' => 150,
+        'schema_type' => 'flat',
+    ]
+]);
+
+echo "Novo produto criado com o id  '{$product->id}'.<br />";
 ```
 
 Para mais detalhes sobre quais serviços existem, quais campos enviar e demais informações,
