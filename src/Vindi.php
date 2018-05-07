@@ -25,7 +25,7 @@ class Vindi
      *
      * @var string
      */
-    public static $sdkVersion = '1.0.11';
+    public static $sdkVersion = '1.1.0';
 
     /**
      * The Environment variable name for API URI.
