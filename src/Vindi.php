@@ -118,10 +118,10 @@ class Vindi
      */
     public static function getApiTimeOut()
     {
-        if (!empty(getenv(static::$apiTimeOutEnvVar))) {
-            return getenv(static::$apiTimeOutEnvVar);
+        if (empty(getenv(static::$apiTimeOutEnvVar))) {
+            return 60;
         }
-        return 60;
+        return getenv(static::$apiTimeOutEnvVar);
     }
 
     /**
