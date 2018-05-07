@@ -1,4 +1,4 @@
-![alt text align:center](https://www.vindi.com.br/image/vindi-logo-transparente.png "Vindi")
+![alt text align:center](https://www.vindi.com.br/assets/images/logo-footer.png "Vindi")
 
 # Vindi - SDK PHP
 
@@ -41,6 +41,15 @@ putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');
 
 // Instancia o serviço de Customers (Clientes)
 $customerService = new Vindi\Customer;
+
+OU
+
+// Instancia o serviço de Customers (Clientes)
+$arguments = array(
+    'VINDI_API_KEY' => 'SUA_CHAVE_DA_API',
+    'VINDI_API_URI' => 'https://sandbox-app.vindi.com.br/api/v1/'
+);
+$customerService = new Vindi\Customer($arguments);
 
 // Cria um novo cliente:
 $customer = $customerService->create([

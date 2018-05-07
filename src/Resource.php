@@ -11,9 +11,18 @@ abstract class Resource
 
     /**
      * Resource constructor.
+     *
+     * @param array $arguments
      */
-    public function __construct()
+    public function __construct($arguments = [])
     {
+        if (key_exists('VINDI_API_KEY', $arguments)) {
+            Vindi::setApiKey($arguments['VINDI_API_KEY']);
+        }
+
+        if (key_exists('VINDI_API_URI', $arguments)) {
+            Vindi::setApiUri($arguments['VINDI_API_URI']);
+        }
         $this->apiRequester = new ApiRequester;
     }
 
