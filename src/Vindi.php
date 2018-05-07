@@ -4,6 +4,19 @@ namespace Vindi;
 
 class Vindi
 {
+    /**
+     * The Environment variable name or argument for API URI.
+     *
+     * @var string
+     */
+    const VINDI_API_URI = 'VINDI_API_URI';
+
+    /**
+     * The Environment variable name or argument for API Key.
+     *
+     * @var string
+     */
+    const VINDI_API_KEY = 'VINDI_API_KEY';
 
     /**
      * API KEY to be set on instances
@@ -14,7 +27,7 @@ class Vindi
 
     /**
      * URI to be set on instances
-     * Ex.: 'https://sandbox-app.vindi.com.br/api/v1/'
+     * Ex.: https://sandbox-app.vindi.com.br/api/v1/
      *
      * @var string;
      */
@@ -26,20 +39,6 @@ class Vindi
      * @var string
      */
     public static $sdkVersion = '1.1.0';
-
-    /**
-     * The Environment variable name for API URI.
-     *
-     * @var string
-     */
-    public static $apiUriEnvVar = 'VINDI_API_URI';
-
-    /**
-     * The Environment variable name for API Key.
-     *
-     * @var string
-     */
-    public static $apiKeyEnvVar = 'VINDI_API_KEY';
 
     /**
      * The Environment variable name for API Time Out.
@@ -86,8 +85,8 @@ class Vindi
      */
     public static function getApiUri()
     {
-        if (!empty(getenv(static::$apiUriEnvVar))) {
-            return getenv(static::$apiUriEnvVar);
+        if (!empty(getenv(static::VINDI_API_URI))) {
+            return getenv(static::VINDI_API_URI);
         }
 
         if (null !== self::$vindi_api_uri) {
@@ -108,7 +107,7 @@ class Vindi
             return self::$vindi_api_key;
         }
 
-        return getenv(static::$apiKeyEnvVar);
+        return getenv(static::VINDI_API_KEY);
     }
 
     /**

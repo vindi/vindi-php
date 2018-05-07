@@ -22,7 +22,7 @@ class VindiTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_should_get_api_uri_from_environment()
     {
-        putenv(Vindi::$apiUriEnvVar);
+        putenv(Vindi::VINDI_API_URI);
         $uri = Vindi::getApiUri();
         $this->assertEquals($uri, 'https://app.vindi.com.br/api/v1/');
 
@@ -32,7 +32,7 @@ class VindiTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($uri, $random);
 
         $random = rand();
-        putenv(Vindi::$apiUriEnvVar . '=' . $random);
+        putenv(Vindi::VINDI_API_URI . '=' . $random);
         $uri = Vindi::getApiUri();
         $this->assertEquals($uri, $random);
     }
@@ -40,12 +40,12 @@ class VindiTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_should_get_api_key_from_environment()
     {
-        putenv(Vindi::$apiKeyEnvVar);
+        putenv(Vindi::VINDI_API_KEY);
         $key = Vindi::getApiKey();
         $this->assertFalse($key);
 
         $random = rand();
-        putenv(Vindi::$apiKeyEnvVar . '=' . $random);
+        putenv(Vindi::VINDI_API_KEY . '=' . $random);
         $key = Vindi::getApiKey();
         $this->assertEquals($key, $random);
 
