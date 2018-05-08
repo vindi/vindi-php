@@ -27,12 +27,12 @@ class VindiTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($uri, 'https://app.vindi.com.br/api/v1/');
 
         $random = rand();
-        Vindi::setApiUri($random);
+        putenv(Vindi::VINDI_API_URI . '=' . $random);
         $uri = Vindi::getApiUri();
         $this->assertEquals($uri, $random);
 
         $random = rand();
-        putenv(Vindi::VINDI_API_URI . '=' . $random);
+        Vindi::setApiUri($random);
         $uri = Vindi::getApiUri();
         $this->assertEquals($uri, $random);
     }
