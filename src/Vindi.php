@@ -85,12 +85,12 @@ class Vindi
      */
     public static function getApiUri()
     {
-        if (!empty(getenv(static::VINDI_API_URI))) {
-            return getenv(static::VINDI_API_URI);
-        }
-
         if (null !== self::$vindi_api_uri) {
             return self::$vindi_api_uri;
+        }
+
+        if (!empty(getenv(static::VINDI_API_URI))) {
+            return getenv(static::VINDI_API_URI);
         }
 
         return 'https://app.vindi.com.br/api/v1/';
