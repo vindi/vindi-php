@@ -72,7 +72,7 @@ foreach ($customers as $customer) {
 
 ### Exemplo de Autenticação #2
 
-> Esse método de autenticação utiliza-se de inserção de um *array* como argumento na primeira instância de uma classe *filha* de Resource, sendo ignorada uma nova tentativa de inserir o argumento em uma outra instância. 
+> Esse método de autenticação utiliza-se de inserção de um *array* como argumento na primeira instância de uma classe *filha* de Resource, **sendo ignorada uma nova tentativa de inserir o argumento em uma outra instância.**  
 
 ```php
 require __DIR__.'/vendor/autoload.php';
