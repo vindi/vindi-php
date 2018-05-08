@@ -76,8 +76,8 @@ require __DIR__.'/vendor/autoload.php';
 
 // Declara em um array os valores de VINDI_API_KEY e VINDI_API_URI
 $arguments = array(
-    \Vindi\Vindi::VINDI_API_KEY => 'SUA_CHAVE_DA_API',
-    \Vindi\Vindi::VINDI_API_URI => 'https://sandbox-app.vindi.com.br/api/v1/'
+    'VINDI_API_KEY' => 'SUA_CHAVE_DA_API',
+    'VINDI_API_URI' => 'https://sandbox-app.vindi.com.br/api/v1/'
 );
 
 // Instancia o serviço de Customers (Clientes) com o array contendo VINDI_API_KEY e VINDI_API_URI
