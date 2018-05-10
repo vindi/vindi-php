@@ -1,4 +1,4 @@
-![alt text align:center](https://www.vindi.com.br/image/vindi-logo-transparente.png "Vindi")
+![alt text align:center](https://vindi-blog.s3.amazonaws.com/wp-content/uploads/2017/10/logo-vindi-1.png "Vindi")
 
 # Vindi - SDK PHP
 
@@ -30,14 +30,18 @@ composer require vindi/vindi-php
 ``` bash
 composer test
 ```
+### Exemplo de Autenticação #1
 
-### Exemplo
+> Esse método de autenticação utiliza-se de variáveis de ambiente.
 
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-// Coloca a chave da Vindi (VINDI_API_KEY) no environment do PHP.
+// Coloca a chave da Vindi (VINDI_API_KEY) na variável de ambiente do PHP.
 putenv('VINDI_API_KEY=SUA_CHAVE_DA_API');
+
+// Coloca a chave da Vindi (VINDI_API_URI) na variável de ambiente do PHP.
+putenv('VINDI_API_URI=https://sandbox-app.vindi.com.br/api/v1/');
 
 // Instancia o serviço de Customers (Clientes)
 $customerService = new Vindi\Customer;
@@ -64,6 +68,60 @@ foreach ($customers as $customer) {
 
     echo "O cliente '{$customer->name}' foi atualizado!<br />";
 }
+```
+
+### Exemplo de Autenticação #2
+
+> Esse método de autenticação utiliza-se de inserção de um *array* como argumento na primeira instância de uma classe *filha* de Resource, **sendo ignorada uma nova tentativa de inserir o argumento em uma outra instância.**  
+
+```php
+require __DIR__.'/vendor/autoload.php';
+
+// Declara em um array os valores de VINDI_API_KEY e VINDI_API_URI
+$arguments = array(
+    'VINDI_API_KEY' => 'SUA_CHAVE_DA_API',
+    'VINDI_API_URI' => 'https://sandbox-app.vindi.com.br/api/v1/'
+);
+
+// Instancia o serviço de Customers (Clientes) com o array contendo VINDI_API_KEY e VINDI_API_URI
+$customerService = new Vindi\Customer($arguments);
+
+// Cria um novo cliente:
+$customer = $customerService->create([
+    'name'  => 'Teste da Silva',
+    'email' => 'contato@vindi.com.br',
+]);
+
+echo "Novo cliente criado com o id '{$customer->id}'.<br />";
+
+// Busca todos os clientes, ordenando pelo campo 'created_at' descendente.
+$customers = $customerService->all([
+    'sort_by'    => 'created_at',
+    'sort_order' => 'desc'
+]);
+
+// Para cada cliente da array de clientes
+foreach ($customers as $customer) {
+    $customerService->update($customer->id, [
+        'notes' => 'Este cliente foi atualizado pelo SDK PHP.',
+    ]);
+
+    echo "O cliente '{$customer->name}' foi atualizado!<br />";
+}
+
+// Instancia o serviço de Products que não requer argumentos, pois já foi configurado em Customer
+$productService = new Vindi\Product;
+
+// Cria um novo produto:
+$product = $productService->create([
+    'name' => 'Teste de Produto',
+    'pricing_schema' => [
+        'price' => 150,
+        'schema_type' => 'flat',
+    ]
+]);
+
+echo "Novo produto criado com o id  '{$product->id}'.<br />";
 ```
 
 Para mais detalhes sobre quais serviços existem, quais campos enviar e demais informações,

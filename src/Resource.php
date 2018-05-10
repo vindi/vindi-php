@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Resource
+ *
+ * @package Vindi
+ */
 abstract class Resource
 {
     /**
@@ -11,9 +16,18 @@ abstract class Resource
 
     /**
      * Resource constructor.
+     *
+     * @param array $arguments
      */
-    public function __construct()
+    public function __construct($arguments = [])
     {
+        if (key_exists(Vindi::VINDI_API_KEY, $arguments)) {
+            Vindi::setApiKey($arguments[Vindi::VINDI_API_KEY]);
+        }
+
+        if (key_exists(Vindi::VINDI_API_URI, $arguments)) {
+            Vindi::setApiUri($arguments[Vindi::VINDI_API_URI]);
+        }
         $this->apiRequester = new ApiRequester;
     }
 
@@ -52,6 +66,9 @@ abstract class Resource
      * @param array $params Pagination and Filter parameters.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function all(array $params = [])
     {
@@ -64,6 +81,9 @@ abstract class Resource
      * @param array $form_params The request body.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function create(array $form_params = [])
     {
@@ -76,6 +96,9 @@ abstract class Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function retrieve($id = null)
     {
@@ -89,6 +112,9 @@ abstract class Resource
      * @param array $form_params The request body.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function update($id = null, array $form_params = [])
     {
@@ -98,10 +124,13 @@ abstract class Resource
     /**
      * Delete a specific resource.
      *
-     * @param int $id The resource's id.
+     * @param int   $id          The resource's id.
      * @param array $form_params The request body.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function delete($id = null, array $form_params = [])
     {
@@ -115,6 +144,9 @@ abstract class Resource
      * @param string $additionalEndpoint Additional endpoint that will be appended to the URL.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function get($id = null, $additionalEndpoint = null)
     {
@@ -129,6 +161,9 @@ abstract class Resource
      * @param array  $form_params        The request body.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function post($id = null, $additionalEndpoint = null, array $form_params = [])
     {

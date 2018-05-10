@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class PaymentMethod
+ *
+ * @package Vindi
+ */
 class PaymentMethod extends Resource
 {
     /**

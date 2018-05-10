@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Charge
+ *
+ * @package Vindi
+ */
 class Charge extends Resource
 {
     /**
@@ -50,5 +55,17 @@ class Charge extends Resource
     public function refund($id)
     {
         return $this->post($id, 'refund');
+    }
+
+    /**
+     * Make a POST request to charges/{id}/fraud_review.
+     *
+     * @param int   $id The resource's id.
+     *
+     * @return mixed
+     */
+    public function fraudReview($id)
+    {
+        return $this->post($id, 'fraud_review');
     }
 }

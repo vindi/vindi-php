@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Merchant
+ *
+ * @package Vindi
+ */
 class Merchant extends Resource
 {
     /**

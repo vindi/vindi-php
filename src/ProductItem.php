@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class ProductItem
+ *
+ * @package Vindi
+ */
 class ProductItem extends Resource
 {
     /**

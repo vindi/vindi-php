@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Customer
+ *
+ * @package Vindi
+ */
 class Customer extends Resource
 {
     /**
@@ -12,5 +17,17 @@ class Customer extends Resource
     public function endpoint()
     {
         return 'customers';
+    }
+
+    /**
+     * Make a POST request to customers/{id}/unarchive.
+     *
+     * @param int $id The resource's id.
+     *
+     * @return mixed
+     */
+    public function unarchive($id)
+    {
+        return $this->post($id, 'unarchive');
     }
 }

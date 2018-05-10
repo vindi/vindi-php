@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Message
+ *
+ * @package Vindi
+ */
 class Message extends Resource
 {
     /**

@@ -3,11 +3,11 @@
 namespace Vindi;
 
 /**
- * Class Usage
+ * Class Notification
  *
  * @package Vindi
  */
-class Usage extends Resource
+class Notification extends Resource
 {
     /**
      * The endpoint that will hit the API.
@@ -16,6 +16,6 @@ class Usage extends Resource
      */
     public function endpoint()
     {
-        return 'usages';
+        return 'notifications';
     }
 }

@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class BillItem
+ *
+ * @package Vindi
+ */
 class BillItem extends Resource
 {
     /**

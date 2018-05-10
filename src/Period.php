@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Period
+ *
+ * @package Vindi
+ */
 class Period extends Resource
 {
     /**
