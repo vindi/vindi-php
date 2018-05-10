@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class PaymentProfile
+ *
+ * @package Vindi
+ */
 class PaymentProfile extends Resource
 {
     /**
@@ -20,6 +25,9 @@ class PaymentProfile extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function verify($id)
     {

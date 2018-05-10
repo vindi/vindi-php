@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Usage
+ *
+ * @package Vindi
+ */
 class Usage extends Resource
 {
     /**

@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Discount
+ *
+ * @package Vindi
+ */
 class Discount extends Resource
 {
     /**

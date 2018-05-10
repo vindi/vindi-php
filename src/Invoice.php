@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Invoice
+ *
+ * @package Vindi
+ */
 class Invoice extends Resource
 {
     /**

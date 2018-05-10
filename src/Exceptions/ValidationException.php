@@ -1,5 +1,10 @@
 <?php namespace Vindi\Exceptions;
 
+/**
+ * Class ValidationException
+ *
+ * @package Vindi\Exceptions
+ */
 class ValidationException extends RequestException
 {
     /**

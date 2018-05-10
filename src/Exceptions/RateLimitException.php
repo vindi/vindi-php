@@ -2,6 +2,11 @@
 
 use Exception;
 
+/**
+ * Class RateLimitException
+ *
+ * @package Vindi\Exceptions
+ */
 class RateLimitException extends Exception
 {
     /**
@@ -45,7 +50,7 @@ class RateLimitException extends Exception
      * @param mixed  $response API response.
      * @param string $name     Header name.
      *
-     * @returns int
+     * @return int
      */
     private function getHeaderValue($response, $name)
     {

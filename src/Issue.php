@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Issue
+ *
+ * @package Vindi
+ */
 class Issue extends Resource
 {
     /**

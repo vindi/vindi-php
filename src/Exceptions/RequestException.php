@@ -2,6 +2,11 @@
 
 use Exception;
 
+/**
+ * Class RequestException
+ *
+ * @package Vindi\Exceptions
+ */
 class RequestException extends Exception
 {
     /**

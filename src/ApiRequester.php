@@ -9,6 +9,11 @@ use Vindi\Http\Client;
 use Vindi\Exceptions\RequestException;
 use Vindi\Exceptions\RateLimitException;
 
+/**
+ * Class ApiRequester
+ *
+ * @package Vindi
+ */
 class ApiRequester
 {
     /**
@@ -17,7 +22,7 @@ class ApiRequester
     public $client;
 
     /**
-     * @var \Psr\Http\Message\ResponseInterface
+     * @var ResponseInterface
      */
     public $lastResponse;
 
@@ -40,6 +45,9 @@ class ApiRequester
      * @param array  $options  Options for the request.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function request($method, $endpoint, array $options = [])
     {
@@ -54,9 +62,11 @@ class ApiRequester
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param ResponseInterface $response
      *
      * @return object
+     * @throws RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function response(ResponseInterface $response)
     {
@@ -75,10 +85,10 @@ class ApiRequester
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param ResponseInterface $response
      *
      * @return $this
-     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws RateLimitException
      */
     private function checkRateLimit(ResponseInterface $response)
     {
@@ -90,8 +100,8 @@ class ApiRequester
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
-     * @param mixed                     $data
+     * @param ResponseInterface $response
+     * @param mixed             $data
      *
      * @return $this
      * @throws \Vindi\Exceptions\RequestException
@@ -100,9 +110,9 @@ class ApiRequester
     {
         $status = $response->getStatusCode();
 
-        $data = (array) $data;
+        $data = (array)$data;
 
-        $statusClass = (int) ($status / 100);
+        $statusClass = (int)($status / 100);
 
         if (($statusClass === 4) || ($statusClass === 5)) {
             switch ($status) {

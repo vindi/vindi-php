@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Notification
+ *
+ * @package Vindi
+ */
 class Notification extends Resource
 {
     /**

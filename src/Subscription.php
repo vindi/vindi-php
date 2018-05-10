@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Subscription
+ *
+ * @package Vindi
+ */
 class Subscription extends Resource
 {
     /**
@@ -36,5 +41,17 @@ class Subscription extends Resource
     public function reactivate($id)
     {
         return $this->post($id, 'reactivate');
+    }
+
+    /**
+     * Make a POST request to subscriptions/{id}/renew.
+     *
+     * @param int $id The resource's id.
+     *
+     * @return mixed
+     */
+    public function renew($id)
+    {
+        return $this->post($id, 'renew');
     }
 }
