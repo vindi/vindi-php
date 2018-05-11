@@ -29,7 +29,7 @@ composer require vindi/vindi-php
 
 ## Variável de ambiente
 
-> Esse método de autenticação utiliza-se de inserção de variáveis de ambiente podendo ser utilizado um arquivo *.env* para guardar dados de configuração.   
+> Esse método de autenticação utiliza-se de inserção de variáveis de ambiente.   
 
 ```php
 
