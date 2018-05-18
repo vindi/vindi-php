@@ -1,6 +1,10 @@
 # Changelog
 
-Todas as mudanças notáveis serão documentadas neste arquivo.
+All notable changes will be documented in this file.
+
+## 1.1.0 - 04/05/2018
+- Option to pass VINDI_API_URI as an argument on instance son of Resource.
+- Option to pass VINDI_API_KEY as an argument on instance son of Resource.
 
 ## 1.0.11 - 14/03/2018
 - VINDI_API_URI environment variable support.

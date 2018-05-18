@@ -4,27 +4,41 @@ namespace Vindi;
 
 class Vindi
 {
+    /**
+     * The Environment variable name or argument for API URI.
+     *
+     * @var string
+     */
+    const VINDI_API_URI = 'VINDI_API_URI';
+
+    /**
+     * The Environment variable name or argument for API Key.
+     *
+     * @var string
+     */
+    const VINDI_API_KEY = 'VINDI_API_KEY';
+
+    /**
+     * API KEY to be set on instances
+     *
+     * @var string
+     */
+    private static $vindi_api_key;
+
+    /**
+     * URI to be set on instances
+     * Ex.: https://sandbox-app.vindi.com.br/api/v1/
+     *
+     * @var string;
+     */
+    private static $vindi_api_uri;
 
     /**
      * This Package SDK Version.
      *
      * @var string
      */
-    public static $sdkVersion = '1.0.11';
-
-    /**
-     * The Environment variable name for API URI.
-     *
-     * @var string
-     */
-    public static $apiUriEnvVar = 'VINDI_API_URI';
-
-    /**
-     * The Environment variable name for API Key.
-     *
-     * @var string
-     */
-    public static $apiKeyEnvVar = 'VINDI_API_KEY';
+    public static $sdkVersion = '1.1.0';
 
     /**
      * The Environment variable name for API Time Out.
@@ -34,16 +48,52 @@ class Vindi
     public static $apiTimeOutEnvVar = 'VINDI_API_TIME_OUT';
 
     /**
+     * Vindi constructor.
+     */
+    private function __construct()
+    {
+    }
+
+    /**
+     * Set API KEY
+     *
+     * @param $vindi_api_key
+     */
+    public static function setApiKey($vindi_api_key)
+    {
+        if (null === self::$vindi_api_key) {
+            self::$vindi_api_key = $vindi_api_key;
+        }
+    }
+
+    /**
+     * Set API URI
+     *
+     * @param $vindi_api_uri
+     */
+    public static function setApiUri($vindi_api_uri)
+    {
+        if (null === self::$vindi_api_uri) {
+            self::$vindi_api_uri = $vindi_api_uri;
+        }
+    }
+
+    /**
      * Get Vindi API URI from environment.
      *
      * @return string
      */
     public static function getApiUri()
     {
-        if (empty(getenv(static::$apiUriEnvVar))) {
-            return 'https://app.vindi.com.br/api/v1/';
+        if (null !== self::$vindi_api_uri) {
+            return self::$vindi_api_uri;
         }
-        return getenv(static::$apiUriEnvVar);
+
+        if (!empty(getenv(static::VINDI_API_URI))) {
+            return getenv(static::VINDI_API_URI);
+        }
+
+        return 'https://app.vindi.com.br/api/v1/';
     }
 
     /**
@@ -53,7 +103,11 @@ class Vindi
      */
     public static function getApiKey()
     {
-        return getenv(static::$apiKeyEnvVar);
+        if (null !== self::$vindi_api_key) {
+            return self::$vindi_api_key;
+        }
+
+        return getenv(static::VINDI_API_KEY);
     }
 
     /**
