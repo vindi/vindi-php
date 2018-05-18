@@ -25,6 +25,9 @@ class Subscription extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function periods($id)
     {
@@ -37,6 +40,9 @@ class Subscription extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function reactivate($id)
     {
@@ -49,6 +55,9 @@ class Subscription extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function renew($id)
     {

@@ -25,6 +25,9 @@ class Bill extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function approve($id)
     {
@@ -37,6 +40,9 @@ class Bill extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function charge($id)
     {
@@ -49,6 +55,9 @@ class Bill extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function invoice($id)
     {
