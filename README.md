@@ -25,16 +25,14 @@ Via Composer
 composer require vindi/vindi-php
 ```
 
-### Teste
+# Métodos de Autenticação
 
-``` bash
-composer test
-```
-### Exemplo de Autenticação #1
+## Variável de ambiente
 
-> Esse método de autenticação utiliza-se de variáveis de ambiente.
+> Esse método de autenticação utiliza-se de inserção de variáveis de ambiente.   
 
 ```php
+
 require __DIR__.'/vendor/autoload.php';
 
 // Coloca a chave da Vindi (VINDI_API_KEY) na variável de ambiente do PHP.
@@ -45,36 +43,14 @@ putenv('VINDI_API_URI=https://sandbox-app.vindi.com.br/api/v1/');
 
 // Instancia o serviço de Customers (Clientes)
 $customerService = new Vindi\Customer;
-
-// Cria um novo cliente:
-$customer = $customerService->create([
-    'name'  => 'Teste da Silva',
-    'email' => 'contato@vindi.com.br',
-]);
-
-echo "Novo cliente criado com o id '{$customer->id}'.<br />";
-
-// Busca todos os clientes, ordenando pelo campo 'created_at' descendente.
-$customers = $customerService->all([
-    'sort_by'    => 'created_at',
-    'sort_order' => 'desc'
-]);
-
-// Para cada cliente da array de clientes
-foreach ($customers as $customer) {
-    $customerService->update($customer->id, [
-        'notes' => 'Este cliente foi atualizado pelo SDK PHP.',
-    ]);
-
-    echo "O cliente '{$customer->name}' foi atualizado!<br />";
-}
 ```
 
-### Exemplo de Autenticação #2
+## Argumento de instância
 
 > Esse método de autenticação utiliza-se de inserção de um *array* como argumento na primeira instância de uma classe *filha* de Resource, **sendo ignorada uma nova tentativa de inserir o argumento em uma outra instância.**  
 
 ```php
+
 require __DIR__.'/vendor/autoload.php';
 
 // Declara em um array os valores de VINDI_API_KEY e VINDI_API_URI
@@ -86,6 +62,14 @@ $arguments = array(
 // Instancia o serviço de Customers (Clientes) com o array contendo VINDI_API_KEY e VINDI_API_URI
 $customerService = new Vindi\Customer($arguments);
 
+```
+
+## Exemplo de implementação
+
+> Exemplo de código após autenticação (uma das duas formas existentes descritas acima), seguindo a sequência de instanciação de Customer.
+
+```php
+
 // Cria um novo cliente:
 $customer = $customerService->create([
     'name'  => 'Teste da Silva',
@@ -109,7 +93,7 @@ foreach ($customers as $customer) {
     echo "O cliente '{$customer->name}' foi atualizado!<br />";
 }
 
-// Instancia o serviço de Products que não requer argumentos, pois já foi configurado em Customer
+// Instancia o serviço de Product que não requer argumentos, pois já foi configurado em Customer ou foi configurado nas variáveis de ambiente.
 $productService = new Vindi\Product;
 
 // Cria um novo produto:
@@ -144,7 +128,7 @@ $lastResponse->getHeaders();
 $lastResponse->getHeader('Header-Name');
 ```
 
-### Webhooks
+## Webhooks
 
 Este pacote torna possível a interpretação dos [webhooks enviados pela Vindi][link-webhooks].
 Para tal, disponibilize uma URL/rota que será acessível pela web e nela utilize a classe `Vindi\WebhookHandler`
