@@ -8,10 +8,10 @@ class VindiTest extends \PHPUnit_Framework_TestCase
 {
 
     /** @test */
-    public function it_should_bet_private()
+    public function it_should_be_private()
     {
         try {
-            $constructor = new \ReflectionClass(Vindi::class);
+            $constructor = (new \ReflectionClass(Vindi::class))->getConstructor();
             $modifier = \Reflection::getModifierNames($constructor->getModifiers());
             $this->assertEquals('private',$modifier[0]);
         } catch (\Exception $exception) {
