@@ -2,6 +2,15 @@
 
 All notable changes will be documented in this file.
 
+## 1.2.0 - 28/05/2018
+- Add new endpoints to keep up with Vindi API.
+- Notification
+- Bill->charge
+- Bill->invoice
+- Charge->fraudReview
+- Customer->unarchive($id)
+- Subscription->renew($id)
+
 ## 1.1.0 - 04/05/2018
 - Option to pass VINDI_API_URI as an argument on instance son of Resource.
 - Option to pass VINDI_API_KEY as an argument on instance son of Resource.
