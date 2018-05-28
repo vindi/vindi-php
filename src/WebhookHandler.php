@@ -4,6 +4,11 @@ namespace Vindi;
 
 use Vindi\Exceptions\WebhookHandleException;
 
+/**
+ * Class WebhookHandler
+ *
+ * @package Vindi
+ */
 class WebhookHandler
 {
     /**

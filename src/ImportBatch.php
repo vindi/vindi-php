@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class ImportBatch
+ *
+ * @package Vindi
+ */
 class ImportBatch extends Resource
 {
     /**
@@ -16,9 +21,12 @@ class ImportBatch extends Resource
 
     /**
      * @param string $filePath
-     * @param array $options
+     * @param array  $options
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function import($filePath, array $options)
     {

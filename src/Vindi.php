@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Vindi
+ *
+ * @package Vindi
+ */
 class Vindi
 {
     /**

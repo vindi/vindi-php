@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Period
+ *
+ * @package Vindi
+ */
 class Period extends Resource
 {
     /**
@@ -20,6 +25,9 @@ class Period extends Resource
      * @param int $id The resource's id.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
      */
     public function bill($id)
     {

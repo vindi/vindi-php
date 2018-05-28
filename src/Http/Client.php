@@ -5,6 +5,11 @@ namespace Vindi\Http;
 use GuzzleHttp\Client as Guzzle;
 use Vindi\Vindi;
 
+/**
+ * Class Client
+ *
+ * @package Vindi\Http
+ */
 class Client extends Guzzle
 {
     /**

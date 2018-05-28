@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Transaction
+ *
+ * @package Vindi
+ */
 class Transaction extends Resource
 {
     /**

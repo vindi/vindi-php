@@ -2,6 +2,11 @@
 
 namespace Vindi;
 
+/**
+ * Class Plan
+ *
+ * @package Vindi
+ */
 class Plan extends Resource
 {
     /**
