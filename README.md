@@ -192,12 +192,12 @@ Todas as informações sobre cada release podem ser consultadas em [CHANGELOG.md
 ## Licença
 GNU GPLv3. Por favor, veja o [Arquivo de Licença](license.txt) para mais informações.
 
-[ico-version]: https://img.shields.io/packagist/v/vindi/vindi-php.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-GPLv3-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/vindi/vindi-php/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/vindi/vindi-php.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/vindi/vindi-php.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/vindi/vindi-php.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/vindi/vindi-php.svg
+[ico-license]: https://img.shields.io/badge/license-GPLv3-blue.svg
+[ico-travis]: https://img.shields.io/travis/vindi/vindi-php/master.svg
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/vindi/vindi-php.svg
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/vindi/vindi-php.svg
+[ico-downloads]: https://img.shields.io/packagist/dt/vindi/vindi-php.svg
 
 [link-packagist]: https://packagist.org/packages/vindi/vindi-php
 [link-travis]: https://travis-ci.org/vindi/vindi-php
