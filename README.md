@@ -1,20 +1,22 @@
-![alt text align:center](https://vindi-blog.s3.amazonaws.com/wp-content/uploads/2017/10/logo-vindi-1.png "Vindi")
+<p align="center"><img src ="https://vindi-blog.s3.amazonaws.com/wp-content/uploads/2017/10/logo-vindi-1.png" /></p>
 
+##
 # Vindi - SDK PHP
 
-[![Última Versão no Packagist][ico-version]][link-packagist]
-[![Licença do Software][ico-license]](license.txt)
-[![Status de Build][ico-travis]][link-travis]
-[![Status de Coverage][ico-scrutinizer]][link-scrutinizer]
-[![Nota de Qualidade][ico-code-quality]][link-code-quality]
-[![Downloads no Total][ico-downloads]][link-downloads]
+[![Licença do Software][badge-license]](license.txt)
+[![Última Versão no Packagist][badge-version]][link-packagist]
+[![Status de Build][badge-travis]][link-travis]
+[![Status de Coverage][badge-scrutinizer]][link-scrutinizer]
+[![Nota de Qualidade][badge-code-quality]][link-code-quality]
+[![Downloads no Total][badge-downloads]][link-downloads]
 
-## Descrição
+# Descrição
 Este pacote consiste em um SDK em PHP para a [API de Recorrência][link-introducao-api] da [Vindi][link-vindi].
 
 # Requisitos
-- PHP >=5.5.19;
-- Certificado digital HTTPS assinado por uma entidade certificadora;
+- PHP versão **5.6.x** ou superior.
+- cURL habilitado para o PHP.
+- Certificado SSL.
 - Conta ativa na [Vindi](https://www.vindi.com.br "Vindi").
 
 # Instalação
@@ -192,12 +194,12 @@ Todas as informações sobre cada release podem ser consultadas em [CHANGELOG.md
 ## Licença
 GNU GPLv3. Por favor, veja o [Arquivo de Licença](license.txt) para mais informações.
 
-[ico-version]: https://img.shields.io/packagist/v/vindi/vindi-php.svg
-[ico-license]: https://img.shields.io/badge/license-GPLv3-blue.svg
-[ico-travis]: https://img.shields.io/travis/vindi/vindi-php/master.svg
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/vindi/vindi-php.svg
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/vindi/vindi-php.svg
-[ico-downloads]: https://img.shields.io/packagist/dt/vindi/vindi-php.svg
+[badge-version]: https://img.shields.io/packagist/v/vindi/vindi-php.svg
+[badge-license]: https://img.shields.io/badge/license-GPLv3-blue.svg
+[badge-travis]: https://img.shields.io/travis/vindi/vindi-php/master.svg
+[badge-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/vindi/vindi-php.svg
+[badge-code-quality]: https://img.shields.io/scrutinizer/g/vindi/vindi-php.svg
+[badge-downloads]: https://img.shields.io/packagist/dt/vindi/vindi-php.svg
 
 [link-packagist]: https://packagist.org/packages/vindi/vindi-php
 [link-travis]: https://travis-ci.org/vindi/vindi-php
