@@ -3,7 +3,7 @@
 ##
 # Vindi - SDK PHP
 
-[![Licença do Software][badge-license]](license.txt)
+[![Licença do Software][badge-license]](LICENSE)
 [![Última Versão no Packagist][badge-version]][link-packagist]
 [![Status de Build][badge-travis]][link-travis]
 [![Status de Coverage][badge-scrutinizer]][link-scrutinizer]
