@@ -75,8 +75,12 @@ class ApiRequester
         $content = $response->getBody()->getContents();
 
         $decoded = json_decode($content); // parse as object
-        reset($decoded);
-        $data = current($decoded); // get first attribute from array, e.g.: subscription, subscriptions, errors.
+        $data = $decoded;
+
+        if (!empty($decoded)) {
+            reset($decoded);
+            $data = current($decoded); // get first attribute from array, e.g.: subscription, subscriptions, errors.
+        }
 
         $this->checkRateLimit($response)
             ->checkForErrors($response, $data);

@@ -11,6 +11,7 @@ use Vindi\Exceptions\RequestException;
 use Vindi\Exceptions\ValidationException;
 use Vindi\Http\Client;
 use Vindi\ApiRequester;
+use function GuzzleHttp\json_encode;
 
 class ApiRequesterTest extends \PHPUnit_Framework_TestCase
 {
@@ -89,4 +90,31 @@ class ApiRequesterTest extends \PHPUnit_Framework_TestCase
 
         $this->apiRequester->request('GET', 'test');
     }
+
+     /** @test */
+     public function it_should_pass_when_response_has_a_not_empty_body()
+     {
+         $request = new Request('GET', 'test');
+
+         # json_encode(["test"]) replicates a fake json response received from Vindi' API
+         $response = new Response(200, [], json_encode(["text"]));
+         $clientException = new ClientException('', $request, $response);
+
+         $this->apiRequester->client->method('request')->willThrowException($clientException);
+         $this->assertTrue(!empty($this->apiRequester->request('GET', 'test')));
+     }
+
+     /** @test */
+     public function it_should_pass_when_response_has_a_empty_body()
+     {
+         $request = new Request('GET', 'test');
+
+         # json_encode(null) replicates the ApiRequester@response method behavior when received a null response for some unmapped reason
+         $response = new Response(200, [], json_decode(null));
+
+         $clientException = new ClientException('', $request, $response);
+
+         $this->apiRequester->client->method('request')->willThrowException($clientException);
+         $this->assertTrue(empty($this->apiRequester->request('GET', 'test')));
+     }
 }
