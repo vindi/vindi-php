@@ -62,7 +62,7 @@ class Charge extends Resource
      * @throws \Vindi\Exceptions\RateLimitException
      * @throws \Vindi\Exceptions\RequestException
      */
-    public function refund($id,$form_params = [])
+    public function refund($id, array $form_params = [])
     {
         return $this->post($id, 'refund', $form_params);
     }
