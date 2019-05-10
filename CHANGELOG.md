@@ -2,6 +2,9 @@
 
 All notable changes will be documented in this file.
 
+## 1.2.1 - 10/05/2019
+- Add the required parameter for partial refund
+
 ## 1.2.0 - 28/05/2018
 - Add new endpoints to keep up with Vindi API.
 - Notification

@@ -54,16 +54,17 @@ class Charge extends Resource
     /**
      * Make a POST request to charges/{id}/refund.
      *
-     * @param int $id The resource's id.
+     * @param int   $id             The resource's id.
+     * @param array $form_params    The request body.
      *
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Vindi\Exceptions\RateLimitException
      * @throws \Vindi\Exceptions\RequestException
      */
-    public function refund($id)
+    public function refund($id, array $form_params = [])
     {
-        return $this->post($id, 'refund');
+        return $this->post($id, 'refund', $form_params);
     }
 
     /**
