@@ -43,7 +43,7 @@ class Vindi
      *
      * @var string
      */
-    public static $sdkVersion = '1.2.0';
+    public static $sdkVersion = '1.2.1';
 
     /**
      * The Environment variable name for API Time Out.
