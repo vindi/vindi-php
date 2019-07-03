@@ -5,7 +5,7 @@ namespace Vindi\Test;
 use Vindi\Movement;
 use Vindi\ApiRequester;
 
-class movementTest extends ResourceTest
+class MovementTest extends ResourceTest
 {
     public function setUp()
     {
