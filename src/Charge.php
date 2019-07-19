@@ -2,11 +2,11 @@
 
 namespace Vindi;
 
-/**
- * Class Charge
- *
- * @package Vindi
- */
+    /**
+     * Class Charge
+     *
+     * @package Vindi
+     */
 class Charge extends Resource
 {
     /**
