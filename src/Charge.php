@@ -94,6 +94,6 @@ class Charge extends Resource
       */
     public function capture($id)
     {
-      return $this->post($id, 'capture');
+        return $this->post($id, 'capture');
     }
 }
