@@ -2,11 +2,11 @@
 
 namespace Vindi;
 
-/**
- * Class Charge
- *
- * @package Vindi
- */
+    /**
+     * Class Charge
+     *
+     * @package Vindi
+     */
 class Charge extends Resource
 {
     /**
@@ -77,8 +77,23 @@ class Charge extends Resource
      * @throws \Vindi\Exceptions\RateLimitException
      * @throws \Vindi\Exceptions\RequestException
      */
-    public function fraudReview($id)
+    public function fraudReview($id, array $form_params = [])
     {
-        return $this->post($id, 'fraud_review');
+        return $this->post($id, 'fraud_review', $form_params);
+    }
+
+    /**
+      * Make a POST request to charges/{id}/capture.
+      *
+      * @param int $id The resource's id.
+      *
+      * @return mixed
+      * @throws \GuzzleHttp\Exception\GuzzleException
+      * @throws \Vindi\Exceptions\RateLimitException
+      * @throws \Vindi\Exceptions\RequestException
+      */
+    public function capture($id)
+    {
+        return $this->post($id, 'capture');
     }
 }
