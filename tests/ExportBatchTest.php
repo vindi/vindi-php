@@ -31,4 +31,3 @@ class ExportBatchTest extends ResourceTest
         $this->assertSame($response, $stdClass);
     }
 }
-}
