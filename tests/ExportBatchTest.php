@@ -2,6 +2,7 @@
 
 namespace Vindi\Test;
 
+use stdClass;
 use Vindi\ExportBatch;
 use Vindi\ApiRequester;
 
