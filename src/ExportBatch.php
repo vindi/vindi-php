@@ -3,7 +3,7 @@
 namespace Vindi;
 
 /**
- * Class Invoice
+ * Class ExportBatch
  *
  * @package Vindi
  */
@@ -20,7 +20,7 @@ class ExportBatch extends Resource
     }
 
     /**
-     *  Make a POST request to invoices/{id}/retry
+     *  Make a POST request to export_batches/{id}/approve
      *
      * @param  int $id The resource's id.
      *
