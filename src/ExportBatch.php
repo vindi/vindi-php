@@ -34,4 +34,3 @@ class ExportBatch extends Resource
         return $this->post($id, 'approve');
     }
 }
-
