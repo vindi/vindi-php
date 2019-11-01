@@ -20,6 +20,21 @@ class Period extends Resource
     }
 
     /**
+     * Make a GET request to periods/{id}/usages.
+     *
+     * @param int $id The resource's id.
+     *
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
+     */
+    public function usages($id)
+    {
+        return $this->get($id, 'usages');
+    }
+
+    /**
      * Make a POST request to periods/{id}/bill.
      *
      * @param int $id The resource's id.
