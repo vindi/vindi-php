@@ -45,4 +45,13 @@ class SubscriptionTest extends ResourceTest
         $response = $this->resource->renew(1);
         $this->assertSame($response, $stdClass);
     }
+
+    /** @test */
+    public function it_should_return_product_items_from_a_subscription()
+    {
+        $stdClass = new stdClass;
+        $this->resource->apiRequester->method('request')->willReturn($stdClass);
+        $response = $this->resource->product_items(1);
+        $this->assertSame($response, $stdClass);
+    }
 }
