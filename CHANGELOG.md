@@ -2,6 +2,11 @@
 
 All notable changes will be documented in this file.
 
+## 1.2.2 - 01/11/2019
+- Add export batches endpoint
+- Add usages by period endpoint
+- Add product items by subscription endpoint
+
 ## 1.2.1 - 10/05/2019
 - Add the required parameter for partial refund
 
