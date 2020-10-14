@@ -2,7 +2,7 @@
 
 All notable changes will be documented in this file.
 
-## 1.2.2 - 01/11/2019
+## 1.2.2 - 14/10/2020
 - Add export batches endpoint
 - Add usages by period endpoint
 - Add product items by subscription endpoint
