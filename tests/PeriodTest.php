@@ -31,4 +31,16 @@ class PeriodTest extends ResourceTest
 
         $this->assertSame($response, $stdClass);
     }
+
+    /** @test */
+    public function it_should_return_usages_from_a_period()
+    {
+        $stdClass = new stdClass;
+
+        $this->resource->apiRequester->method('request')->willReturn($stdClass);
+
+        $response = $this->resource->usages(1);
+
+        $this->assertSame($response, $stdClass);
+    }
 }
