@@ -50,6 +50,21 @@ class Subscription extends Resource
     }
 
     /**
+     * Make a GET request to subscriptions/{id}/product_items.
+     *
+     * @param int $id The resource's id.
+     *
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Vindi\Exceptions\RateLimitException
+     * @throws \Vindi\Exceptions\RequestException
+     */
+    public function product_items($id)
+    {
+        return $this->get($id, 'product_items');
+    }
+
+    /**
      * Make a POST request to subscriptions/{id}/renew.
      *
      * @param int $id The resource's id.
