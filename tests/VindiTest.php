@@ -3,8 +3,9 @@
 namespace Vindi\Test;
 
 use Vindi\Vindi;
+use PHPUnit\Framework\TestCase;
 
-class VindiTest extends \PHPUnit_Framework_TestCase
+class VindiTest extends TestCase
 {
 
     /** @test */

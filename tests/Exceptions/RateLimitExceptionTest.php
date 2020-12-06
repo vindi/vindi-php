@@ -4,8 +4,9 @@ namespace Vindi\Test\Exceptions;
 
 use GuzzleHttp\Psr7\Response;
 use Vindi\Exceptions\RateLimitException;
+use PHPUnit\Framework\TestCase;
 
-class RateLimitExceptionTest extends \PHPUnit_Framework_TestCase
+class RateLimitExceptionTest extends TestCase
 {
     /** @test */
     public function it_should_access_exception_getters()

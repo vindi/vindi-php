@@ -7,10 +7,10 @@ use Vindi\Discount;
 
 class DiscountTest extends ResourceTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->resource = $this->getMockForAbstractClass(Discount::class);
-        $this->resource->apiRequester = $this->getMock(ApiRequester::class);
+        $this->resource->apiRequester = $this->getMockBuilder(ApiRequester::class)->getMock();
     }
 
     /** @test */

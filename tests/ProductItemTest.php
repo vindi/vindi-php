@@ -7,10 +7,10 @@ use Vindi\ApiRequester;
 
 class ProductItemTest extends ResourceTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->resource = $this->getMockForAbstractClass(ProductItem::class);
-        $this->resource->apiRequester = $this->getMock(ApiRequester::class);
+        $this->resource->apiRequester = $this->getMockBuilder(ApiRequester::class)->getMock();
     }
 
     /** @test */

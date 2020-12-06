@@ -36,7 +36,7 @@ abstract class Resource
      *
      * @return string
      */
-    abstract public function endpoint();
+    abstract public function endpoint(): string;
 
     /**
      * Build url that will hit the API.

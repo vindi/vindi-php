@@ -14,7 +14,7 @@ class Customer extends Resource
      *
      * @return string
      */
-    public function endpoint()
+    public function endpoint(): string
     {
         return 'customers';
     }

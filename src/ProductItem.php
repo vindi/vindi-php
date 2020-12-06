@@ -14,7 +14,7 @@ class ProductItem extends Resource
      *
      * @return string
      */
-    public function endpoint()
+    public function endpoint(): string
     {
         return 'product_items';
     }

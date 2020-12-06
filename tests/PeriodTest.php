@@ -8,10 +8,10 @@ use Vindi\Period;
 
 class PeriodTest extends ResourceTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->resource = $this->getMockForAbstractClass(Period::class);
-        $this->resource->apiRequester = $this->getMock(ApiRequester::class);
+        $this->resource->apiRequester = $this->getMockBuilder(ApiRequester::class)->getMock();
     }
 
     /** @test */
