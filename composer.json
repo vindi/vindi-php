@@ -36,7 +36,7 @@
     },
     "scripts": {
         "test": "phpunit",
-        "code-style": "./vendor/bin/phpcs --standard=PSR2 src/"
+        "code-style": "./vendor/bin/phpcs --standard=PSR2 --exclude=PSR1.Methods.CamelCapsMethodName src/"
     },
     "extra": {
         "branch-alias": {
