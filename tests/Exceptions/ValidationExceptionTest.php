@@ -3,8 +3,9 @@
 namespace Vindi\Test\Exceptions;
 
 use Vindi\Exceptions\ValidationException;
+use PHPUnit\Framework\TestCase;
 
-class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
+class ValidationExceptionTest extends TestCase
 {
     /** @test */
     public function it_should_access_exception_getters()

@@ -8,10 +8,10 @@ use Vindi\Subscription;
 
 class SubscriptionTest extends ResourceTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->resource = $this->getMockForAbstractClass(Subscription::class);
-        $this->resource->apiRequester = $this->getMock(ApiRequester::class);
+        $this->resource->apiRequester = $this->getMockBuilder(ApiRequester::class)->getMock();
     }
 
     /** @test */

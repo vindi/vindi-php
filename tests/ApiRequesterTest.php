@@ -11,9 +11,10 @@ use Vindi\Exceptions\RequestException;
 use Vindi\Exceptions\ValidationException;
 use Vindi\Http\Client;
 use Vindi\ApiRequester;
+use PHPUnit\Framework\TestCase;
 use function GuzzleHttp\json_encode;
 
-class ApiRequesterTest extends \PHPUnit_Framework_TestCase
+class ApiRequesterTest extends TestCase
 {
     /**
      * @var \Vindi\ApiRequester;
@@ -25,13 +26,13 @@ class ApiRequesterTest extends \PHPUnit_Framework_TestCase
      */
     private $jsonError = '{"errors": [{"id": "id", "parameter": "parameter", "message": "message"}]}';
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->apiRequester = new ApiRequester;
-        $this->apiRequester->client = $this->getMock(Client::class);
+        $this->apiRequester->client = $this->getMockBuilder(Client::class)->getMock();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->apiRequester = null;
     }
@@ -50,7 +51,7 @@ class ApiRequesterTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_should_throw_a_request_error()
     {
-        $this->setExpectedException(RequestException::class);
+        $this->expectException(RequestException::class);
         $response = new Response(401, [], $this->jsonError);
         $this->apiRequester->client->method('request')->willReturn($response);
 
@@ -60,7 +61,7 @@ class ApiRequesterTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_should_throw_a_validation_error()
     {
-        $this->setExpectedException(ValidationException::class);
+        $this->expectException(ValidationException::class);
         $response = new Response(422, [], $this->jsonError);
         $this->apiRequester->client->method('request')->willReturn($response);
 
@@ -70,7 +71,7 @@ class ApiRequesterTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_should_throw_a_rate_limit_exception()
     {
-        $this->setExpectedException(RateLimitException::class);
+        $this->expectException(RateLimitException::class);
         $response = new Response(429, ['Rate-Limit-Remaining' => 0], $this->jsonError);
         $this->apiRequester->client->method('request')->willReturn($response);
 
@@ -80,7 +81,7 @@ class ApiRequesterTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_should_catch_a_client_exception()
     {
-        $this->setExpectedException(RequestException::class);
+        $this->expectException(RequestException::class);
 
         $request = new Request('GET', 'test');
         $response = new Response(500, [], $this->jsonError);

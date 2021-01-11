@@ -4,20 +4,21 @@ namespace Vindi\Test;
 
 use Vindi\Exceptions\WebhookHandleException;
 use Vindi\WebhookHandler;
+use PHPUnit\Framework\TestCase;
 
-class WebhookHandlerTest extends \PHPUnit_Framework_TestCase
+class WebhookHandlerTest extends TestCase
 {
     /**
      * @var \Vindi\WebhookHandler
      */
     protected $webhookHandler;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->webhookHandler = new WebhookHandler;
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->webhookHandler = null;
     }
@@ -45,7 +46,7 @@ class WebhookHandlerTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_should_refuse_an_empty_webhook()
     {
-        $this->setExpectedException(WebhookHandleException::class, 'Empty post body!');
+        $this->expectException(WebhookHandleException::class, 'Empty post body!');
         $this->webhookHandler->handle();
     }
 
@@ -54,7 +55,7 @@ class WebhookHandlerTest extends \PHPUnit_Framework_TestCase
     {
         $this->webhookHandler->file = dirname(__FILE__) . '/data/webhook-invalid.txt';
 
-        $this->setExpectedException(WebhookHandleException::class, 'Unable to decode JSON from post body!');
+        $this->expectException(WebhookHandleException::class, 'Unable to decode JSON from post body!');
         $this->webhookHandler->handle();
     }
 }

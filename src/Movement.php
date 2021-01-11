@@ -14,7 +14,7 @@ class Movement extends Resource
      *
      * @return string
      */
-    public function endPoint()
+    public function endPoint(): string
     {
         return 'movements';
     }

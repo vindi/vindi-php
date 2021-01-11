@@ -1,20 +1,21 @@
 <?php namespace Vindi\Test\Http;
 
 use Vindi\Http\Client;
+use PHPUnit\Framework\TestCase;
 
-class ClientTest extends \PHPUnit_Framework_TestCase
+class ClientTest extends TestCase
 {
     /**
      * @var \Vindi\Http\Client
      */
     private $client;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->client = new Client();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->client = null;
     }

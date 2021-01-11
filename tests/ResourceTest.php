@@ -6,21 +6,22 @@ use stdClass;
 use Vindi\ApiRequester;
 use Vindi\Resource;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\TestCase;
 
-class ResourceTest extends \PHPUnit_Framework_TestCase
+class ResourceTest extends TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
     protected $resource;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->resource = $this->getMockForAbstractClass(Resource::class);
-        $this->resource->apiRequester = $this->getMock(ApiRequester::class);
+        $this->resource->apiRequester = $this->getMockBuilder(ApiRequester::class)->getMock();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->resource = null;
     }

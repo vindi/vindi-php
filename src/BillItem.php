@@ -14,7 +14,7 @@ class BillItem extends Resource
      *
      * @return string
      */
-    public function endpoint()
+    public function endpoint(): string
     {
         return 'bill_items';
     }

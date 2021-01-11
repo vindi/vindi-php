@@ -4,8 +4,9 @@ namespace Vindi\Test\Exceptions;
 
 use GuzzleHttp\Psr7\Response;
 use Vindi\Exceptions\RequestException;
+use PHPUnit\Framework\TestCase;
 
-class RequestExceptionTest extends \PHPUnit_Framework_TestCase
+class RequestExceptionTest extends TestCase
 {
     /** @test */
     public function it_should_access_exception_getters()

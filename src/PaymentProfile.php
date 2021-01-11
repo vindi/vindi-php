@@ -14,7 +14,7 @@ class PaymentProfile extends Resource
      *
      * @return string
      */
-    public function endpoint()
+    public function endpoint(): string
     {
         return 'payment_profiles';
     }

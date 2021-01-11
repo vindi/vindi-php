@@ -14,7 +14,7 @@ class Invoice extends Resource
      *
      * @return string
      */
-    public function endpoint()
+    public function endpoint(): string
     {
         return 'invoices';
     }
