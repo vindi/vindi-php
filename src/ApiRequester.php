@@ -78,8 +78,9 @@ class ApiRequester
         $data = $decoded;
 
         if (!empty($decoded)) {
-            reset($decoded);
-            $data = current($decoded); // get first attribute from array, e.g.: subscription, subscriptions, errors.
+            $decoded_array = (array) $decoded;
+            reset($decoded_array);
+            $data = (object) current($decoded_array); // get first attribute from array, e.g.: subscription, subscriptions, errors.
         }
 
         $this->checkRateLimit($response)
