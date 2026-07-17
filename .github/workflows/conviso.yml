@@ -1,11 +1,38 @@
 name: Conviso
+
+# Versao INLINE para repos PUBLICOS (repo publico nao pode chamar reusable de
+# repo privado). Scan sem gate (fase 1). Em PR de fork o job e PULADO (fork nao
+# recebe secrets; job skipped satisfaz o required check e nao bloqueia
+# contribuicao externa). auto-close somente em push no branch default.
 on:
   pull_request:
   push:
     branches: [ main, master ]
+
+permissions:
+  contents: read
+
 jobs:
-  conviso:
-    name: Conviso [SI]
-    uses: vindi/conviso-settings/.github/workflows/conviso-scan.yml@main
-    secrets:
+  conviso-ast:
+    name: conviso-ast
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on:
+      group: Conviso
+    concurrency:
+      group: conviso-${{ github.repository }}-${{ github.ref }}
+      cancel-in-progress: true
+    container:
+      image: convisoappsec/convisoast:latest
+    env:
       CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Conviso AST
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          conviso --version
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            conviso ast run --vulnerability-auto-close
+          else
+            conviso ast run
+          fi
