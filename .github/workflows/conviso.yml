@@ -1,0 +1,11 @@
+name: Conviso
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+jobs:
+  conviso:
+    name: Conviso [SI]
+    uses: vindi/conviso-settings/.github/workflows/conviso-scan.yml@main
+    secrets:
+      CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
