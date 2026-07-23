@@ -69,24 +69,27 @@ class ApiRequester
      * @throws \Vindi\Exceptions\RequestException
      */
     public function response(ResponseInterface $response)
-    {
-        $this->lastResponse = $response;
+{
+    $this->lastResponse = $response;
 
-        $content = $response->getBody()->getContents();
+    $content = $response->getBody()->getContents();
 
-        $decoded = json_decode($content); // parse as object
-        $data = $decoded;
+    // Decodifica como array ao invés de objeto
+    $decoded = json_decode($content, true); 
 
-        if (!empty($decoded)) {
-            reset($decoded);
-            $data = current($decoded); // get first attribute from array, e.g.: subscription, subscriptions, errors.
-        }
+    $data = $decoded;
 
-        $this->checkRateLimit($response)
-            ->checkForErrors($response, $data);
-
-        return $data;
+    if (!empty($decoded)) {
+        // Se $decoded é um array, obtém o primeiro elemento
+        $data = is_array($decoded) ? reset($decoded) : $decoded;
     }
+
+    $this->checkRateLimit($response)
+        ->checkForErrors($response, $data);
+
+    return $data;
+}
+
 
     /**
      * @param ResponseInterface $response
