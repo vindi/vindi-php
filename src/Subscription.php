@@ -59,9 +59,9 @@ class Subscription extends Resource
      * @throws \Vindi\Exceptions\RateLimitException
      * @throws \Vindi\Exceptions\RequestException
      */
-    public function product_items($id)
+    public function product_items($id, array $params = [])
     {
-        return $this->get($id, 'product_items');
+        return $this->apiRequester->request('GET', $this->url($id, 'product_items'), ['query' => $params]);
     }
 
     /**
